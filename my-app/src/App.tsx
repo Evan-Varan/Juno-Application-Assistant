@@ -11,11 +11,17 @@ import Input from './components/Input'
 //   const regexPattern = /^(https?:\/\/)([\w-]+(\.[\w-]+)+)(:[0-9]+)?(\/\S*)?$/i
 //   return regexPattern.test(search)
 // }
-type JobParseResult = {
-  title: string,
-  company: string,
-  description: string,
-  techStack: string[]
+type JobApplicationPackage = {
+  listingInfo: {
+    title: string,
+    company: string,
+    description: string,
+    techStack: string[]
+  },
+  coverLetter:{
+    coverLetterText: string
+    date: string;
+  }
 }
 
 export default function App() {
@@ -40,7 +46,7 @@ async function handleJobDescriptionInput() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ jobText: search }),
     });
-    const data : JobParseResult = await res.json();
+    const data : JobApplicationPackage = await res.json();
     setJobData(data);
     setShowOutput(true);
   } catch (e) {
@@ -48,7 +54,7 @@ async function handleJobDescriptionInput() {
   }
 }
 
-  const [jobData, setJobData] = useState<JobParseResult>()
+  const [jobData, setJobData] = useState<JobApplicationPackage>()
   const [search, setSearch] = useState<string>("");
   const [showOutput, setShowOutput] = useState<boolean>(false)
   // const [output, setOutput] = useState<string>("")
@@ -69,14 +75,16 @@ async function handleJobDescriptionInput() {
         {showOutput ?
           <>
             <h1 className="text-3xl flex font-bold underline ">Your Parsed Data:</h1>
-            <p className = "text-center">{jobData?.title}</p>
-            <p className = "text-center">{jobData?.company}</p>
-            <p className = "text-center">{jobData?.description}</p>
-            <ul>
-              {jobData?.techStack?.map((tech,key) => <li key={key}>{tech}</li>)}
+            <p className = "text-center"><strong>Title:</strong> {jobData?.listingInfo.title}</p>
+            <p className = "text-center"><strong>Company:</strong> {jobData?.listingInfo.company}</p>
+            <p className = "text-center"><strong>Description:</strong> {jobData?.listingInfo.description}</p>
+            <ul className = "text-center"><strong>Tech Stack:</strong>
+              {jobData?.listingInfo.techStack?.map((tech,key) => <li key={key}>{tech}</li>)}
             </ul>
             <OutputCard title = "Resume" contentText = "Your optimized resume based on the link above."/>
             <OutputCard title = "Cover Letter" contentText = "Your optimized Cover Letter based on the link above."/>
+            <p className = "text-center"><strong>Date:</strong> {jobData?.coverLetter.date}</p>
+            <p>{jobData?.coverLetter.coverLetterText}</p>
           </> 
          : 
           <EmptyOutputCard />
