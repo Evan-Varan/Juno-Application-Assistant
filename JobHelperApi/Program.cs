@@ -18,8 +18,11 @@ else
 }
 
 builder.Services.AddSingleton(_ => new OpenAIClient(apiKey));
+builder.Services.AddCors(p =>
+    p.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
 var app = builder.Build();
+app.UseCors();
 
 // app.MapPost("/api/coverletter", async (OpenAIClient client, CoverLetterInput input) =>
 // {
@@ -38,10 +41,10 @@ var app = builder.Build();
 // });
 
 
-app.MapPost("/api/jobparser", async (OpenAIClient client, JobUrlInput input) =>
+app.MapPost("/api/jobparser", async (OpenAIClient client, JobTextInput input) =>
 {
     var system = "You extract job information. Respond with JSON only using keys: title, company, description, techStack (array of strings).";
-    var user   = $"Job link: {input.JobUrl}";
+    var user   = $"Job description:\n{input.JobText}";
 
     var chatRequest = new ChatRequest(
         model: "gpt-4.1-mini",
@@ -57,6 +60,23 @@ app.MapPost("/api/jobparser", async (OpenAIClient client, JobUrlInput input) =>
     // Just output what the model replied with
     var raw = result.FirstChoice.Message.Content?.ToString();
 
-    return Results.Ok(new { raw });
+    // Remove code fences if present
+    var cleaned = raw
+        .Replace("```json", "")
+        .Replace("```", "");
+
+    // Deserialize to a strongly-typed object
+    JobParseResult? job;
+    try
+    {
+        job = JsonSerializer.Deserialize<JobParseResult>(cleaned,
+            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+    }
+    catch
+    {
+        return Results.UnprocessableEntity(new { error = "Model did not return valid JSON", raw });
+    }
+
+    return Results.Ok(job);
 });
 app.Run();
