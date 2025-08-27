@@ -76,7 +76,7 @@ app.MapPost("/api/jobparser", async (OpenAIClient client, JobTextInput input) =>
 
     var coverSystem =
         "You write concise, professional cover letters tailored to the job. " +
-        "Write 3 full paragraphs, first person, no headers or salutations. Each Paragraph should be seperated by a full empty line" +
+        "Write 5 full paragraphs, first person, no headers or salutations. Each Paragraph should be seperated by a full empty line" +
         "Use only information provided. Do not fabricate achievements. Return strict minified JSON exactly like: {\"CoverLetterText\":\"...\"}. No markdown, no code fences, no extra text.";
 
     var coverUser =
