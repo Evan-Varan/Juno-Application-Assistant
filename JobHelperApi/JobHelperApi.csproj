@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DocX" Version="4.0.25105.5786" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.16" />
     <PackageReference Include="OpenAI-DotNet" Version="8.8.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />

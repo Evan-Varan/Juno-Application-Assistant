@@ -33,3 +33,12 @@ C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\obj\Debug\net
 C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\obj\Debug\net8.0\JobHelperApi.pdb
 C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\obj\Debug\net8.0\JobHelperApi.genruntimeconfig.cache
 C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\obj\Debug\net8.0\ref\JobHelperApi.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\Xceed.Document.NET.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\Xceed.Drawing.NET.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\Xceed.Words.NET.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\SkiaSharp.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\System.IO.Packaging.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\Brick\Documents\GitHub\JobHelper-Application\JobHelperApi\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
