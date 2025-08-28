@@ -4,6 +4,8 @@ import OutputCard from './components/OutputCard'
 import EmptyOutputCard from './components/EmptyOutputCard'
 import Button from './components/Button'
 import Input from './components/Input'
+import PageHeader from './components/PageHeader'
+import {SparklesIcon} from '@heroicons/react/24/solid'
 
 
 
@@ -60,31 +62,35 @@ async function handleJobDescriptionInput() {
   // const [output, setOutput] = useState<string>("")
 
   return (
-    <div className=" flex gap-4 items-center justify-center flex-col min-h-screen bg-gray-50 border-dashed">
-      <h1 className="text-3xl flex font-bold underline ">Job Helper</h1>
+    <div className=" relative flex gap-4 items-center justify-center flex-col min-h-screen border-dashed bg-black">
+      <PageHeader />
       <div className="flex flex-col gap-8">
-        <div className = "flex flex-row gap-4">
+        <div className = "flex flex-row gap-4 items-center justify-center">
           {/* <Input placeholder = "enter job url" value = {search} onChange = {setSearch}/>
           <Button onClick = {searchHandler}/> */}
 
           {/* <p> Or </p> */}
 
-          <Input placeholder = "enter job description" value = {search} onChange = {setSearch}/>
-          <Button onClick = {handleJobDescriptionInput}/>
+          <Input placeholder = "Enter Job Description..." value = {search} onChange = {setSearch}/>
+          <Button text = "Generate" Icon ={SparklesIcon} onClick = {handleJobDescriptionInput}/>
         </div>
         {showOutput ?
           <>
-            <h1 className="text-3xl flex font-bold underline ">Your Parsed Data:</h1>
-            <p className = "text-center"><strong>Title:</strong> {jobData?.listingInfo.title}</p>
-            <p className = "text-center"><strong>Company:</strong> {jobData?.listingInfo.company}</p>
-            <p className = "text-center"><strong>Description:</strong> {jobData?.listingInfo.description}</p>
-            <ul className = "text-center"><strong>Tech Stack:</strong>
+            <div className = "flex flex-row items-center justify-center gap-4">
+              <OutputCard title = "Resume" contentText = "Your optimized resume based on the link above."/>
+              <OutputCard title = "Cover Letter" contentText = "Your optimized Cover Letter based on the link above."/>
+            </div>
+            <h1 className="text-3xl flex font-bold underline items-center justify-center text-white">Your Parsed Data:</h1>
+            <p className = "text-center text-white"><strong>Title:</strong> {jobData?.listingInfo.title}</p>
+            <p className = "text-center text-white"><strong>Company:</strong> {jobData?.listingInfo.company}</p>
+            <p className = "text-center text-white"><strong>Description:</strong> {jobData?.listingInfo.description}</p>
+            <ul className = "text-center text-white"><strong>Tech Stack:</strong>
               {jobData?.listingInfo.techStack?.map((tech,key) => <li key={key}>{tech}</li>)}
             </ul>
-            <OutputCard title = "Resume" contentText = "Your optimized resume based on the link above."/>
-            <OutputCard title = "Cover Letter" contentText = "Your optimized Cover Letter based on the link above."/>
-            <p className = "text-center"><strong>Date:</strong> {jobData?.coverLetter.date}</p>
-            <p>{jobData?.coverLetter.coverLetterText}</p>
+            
+            <p className = "text-center text-white"><strong>Date:</strong> {jobData?.coverLetter.date}</p>
+            <p className = "text-center text-white">{jobData?.coverLetter.coverLetterText}</p>
+            
           </> 
          : 
           <EmptyOutputCard />
