@@ -37,7 +37,7 @@ app.UseCors();
 //JOB PARSER ENDPOINT. Client will call this endpoint with the raw text input.
 app.MapPost("/api/jobparser", async (OpenAIClient client, JobTextInput input) =>
 {
-    var system = "You extract job information. Respond with JSON only using keys: title, company, description, techStack with number of occurances in description (dictionary object)"; //system role - what the AI is
+    var system = "You extract job information. Respond with JSON only using keys: title, company, description, techStack(array)";
     var user = $"Job description:\n{input.JobText}"; //user role - what the user types to the AI
 
     //ChatGPT Request

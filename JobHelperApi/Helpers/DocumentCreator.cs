@@ -47,7 +47,9 @@ public class DocumentCreator
     public static void WriteResume(JobApplicationPackage package)
     {
         //TODO
+        ResumeHelper.BuildSortedTechnologyDict(package.ListingInfo.TechStack);
     }
+
     public static void ConvertDocxToPdf(string inputPath, string outputPath)
     {
         var psi = new ProcessStartInfo
@@ -62,5 +64,40 @@ public class DocumentCreator
 
         using var process = Process.Start(psi);
         process.WaitForExit();
+    }
+}
+public class ResumeHelper
+{
+    public static List<string> SortTechnologies(List<string> listingTechnologies, List<string> myTechnologies)
+    {
+        List<string> outputTechnologies = new List<string>();
+        //Add job required technologies
+        foreach (string technology in listingTechnologies)
+        {
+            if (myTechnologies.Contains(technology))
+            {
+                outputTechnologies.Add(technology);
+            }
+        }
+        //Add my leftover technologies
+        foreach (string technology in myTechnologies)
+        {
+            if (!outputTechnologies.Contains(technology))
+            {
+                outputTechnologies.Add(technology);
+            }
+        }
+        return outputTechnologies;
+    }
+    public static Dictionary<string,List<string>> BuildSortedTechnologyDict(List<string> listingTechnologies)
+    {
+        var technologyDict = new Dictionary<string, List<string>>
+        {
+            { "frontend", SortTechnologies(listingTechnologies, ["JavaScript", "TypeScript", "React", "HTML5", "CSS", "Tailwind CSS", "Next.js", "JEST", "RTL"]) },
+            { "backend", SortTechnologies(listingTechnologies, ["C#", "Python", "Java", "C++", "Go", ".NET Core", "REST APIs", "ASP.NET", "Node.js", "AWS SDK"]) },
+            { "databases", SortTechnologies(listingTechnologies, ["SQL", "NoSQL", "T-SQL", "MySQL", "Microsoft SQL Server", "SSMS"]) },
+            { "tools", SortTechnologies(listingTechnologies, ["Git", "GitHub", "Docker", "AWS (DynamoDB, Lambda, IAM Roles, S3, App Runner)"]) }
+        };
+        return technologyDict;
     }
 }
