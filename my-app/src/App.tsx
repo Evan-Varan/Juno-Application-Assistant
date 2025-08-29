@@ -5,7 +5,7 @@ import EmptyOutputCard from './components/EmptyOutputCard'
 import Button from './components/Button'
 import Input from './components/Input'
 import PageHeader from './components/PageHeader'
-
+import Navbar from './components/Navbar'
 import {SparklesIcon} from '@heroicons/react/24/solid'
 import Testimonials from './components/Tesimonials'
 
@@ -65,9 +65,13 @@ async function handleJobDescriptionInput() {
   // const [output, setOutput] = useState<string>("")
 
   return (
-    <div className=" relative flex gap-4 items-center justify-center flex-col min-h-screen border-dashed bg-gradient-to-br from-black to-gray-900">
+    <div className =" flex flex-col justify-center border-dashed bg-gradient-to-b from-black to-gray-900">
+      <div className="flex justify-center">
+      <Navbar />
+      </div>
+      <div className=" relative flex gap-4 items-center justify-center flex-col min-h-screen">
       <PageHeader />
-      <div className="flex flex-col gap-4 items-center">
+      <div className="flex flex-col gap-20 items-center">
         <div className = "flex flex-row gap-4 items-center justify-center">
           {/* <Input placeholder = "enter job url" value = {search} onChange = {setSearch}/>
           <Button onClick = {searchHandler}/> */}
@@ -77,7 +81,6 @@ async function handleJobDescriptionInput() {
           <Input placeholder = "Enter Job Description..." value = {search} onChange = {setSearch}/>
           <Button text = "Generate" Icon ={SparklesIcon} onClick = {handleJobDescriptionInput}/>
         </div>
-        <Testimonials />
         {showOutput ?
           <>
             <div className = "flex flex-row items-center justify-center gap-4">
@@ -99,6 +102,8 @@ async function handleJobDescriptionInput() {
          : 
           <EmptyOutputCard />
         }
+      </div>
+      <Testimonials />
       </div>
     </div>
   );

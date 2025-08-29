@@ -35,7 +35,7 @@ const testimonials = [
 
 export default function Testimonials(){
     return(
-        <div className = "flex flex-row gap-4 absolute bottom-4 items-center justify-center">
+        <div className = "flex flex-row gap-4 bottom-4 items-center justify-center">
             {testimonials.map((testimonial,key) =>(
                 <Testimonial
                 key = {key}
