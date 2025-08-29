@@ -62,7 +62,7 @@ async function handleJobDescriptionInput() {
   // const [output, setOutput] = useState<string>("")
 
   return (
-    <div className=" relative flex gap-4 items-center justify-center flex-col min-h-screen border-dashed bg-black">
+    <div className=" relative flex gap-4 items-center justify-center flex-col min-h-screen border-dashed bg-gradient-to-br from-black to-gray-900">
       <PageHeader />
       <div className="flex flex-col gap-8">
         <div className = "flex flex-row gap-4 items-center justify-center">
