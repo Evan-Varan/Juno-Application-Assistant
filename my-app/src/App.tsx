@@ -11,7 +11,7 @@ import Testimonials from './components/Tesimonials'
 import About from './components/About'
 import Build from "./components/Build"
 import Questions from "./components/Questions"
-
+import Footer from "./components/Footer"
 
 
 // function verifyURL(search: string) : boolean{
@@ -71,12 +71,13 @@ async function handleJobDescriptionInput() {
       <div className="flex justify-center">
       <Navbar />
       </div>
-      <div className=" relative flex gap-4 items-center justify-center flex-col min-h-screen">
+      <div className=" relative flex gap-16 items-center justify-center flex-col min-h-screen">
       <PageHeader />
       <Build search ={search} setSearch ={setSearch} handleJobDescriptionInput ={handleJobDescriptionInput} />
       <About />
       <Testimonials />
       <Questions />
+      <Footer />
       
       {/* <div className="flex flex-col gap-20 items-center">
         <div className = "flex flex-row gap-4 items-center justify-center">
