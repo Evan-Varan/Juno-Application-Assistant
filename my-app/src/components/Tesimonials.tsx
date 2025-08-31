@@ -7,7 +7,7 @@ const testimonials = [
       "This app saved me hours of rewriting my job applications. The AI suggestions felt natural and professional.",
     userName: "Sarah Johnson",
     profilePicture: "https://randomuser.me/api/portraits/women/68.jpg",
-    role: "Marketing Specialist",
+    role: "Full-Stack Developer",
   },
   {
     contentText:
@@ -35,16 +35,24 @@ const testimonials = [
 
 export default function Testimonials(){
     return(
-        <div className = "flex flex-row gap-4 bottom-4 items-center justify-center">
-            {testimonials.map((testimonial,key) =>(
-                <Testimonial
-                key = {key}
-                contentText= {testimonial.contentText}
-                userName= {testimonial.userName}
-                profilePicture= {testimonial.profilePicture}
-                role = {testimonial.role}
-                />
-            ))}
+        <div className = "flex flex-col items-center gap-4">
+            <h1></h1>
+            <h1 className="text-xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">TESTIMONIALS</h1>
+            <h1 className="text-3xl flex text-white font-bold">WHAT REAL DEVELOPERS SAY</h1>
+            <div className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-sky-400"></div>
+            
+        
+            <div className = "flex flex-row gap-4 bottom-4 items-center justify-center">
+                {testimonials.map((testimonial,key) =>(
+                    <Testimonial
+                    key = {key}
+                    contentText= {testimonial.contentText}
+                    userName= {testimonial.userName}
+                    profilePicture= {testimonial.profilePicture}
+                    role = {testimonial.role}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

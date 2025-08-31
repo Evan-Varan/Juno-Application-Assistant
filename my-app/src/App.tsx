@@ -8,7 +8,9 @@ import PageHeader from './components/PageHeader'
 import Navbar from './components/Navbar'
 import {SparklesIcon} from '@heroicons/react/24/solid'
 import Testimonials from './components/Tesimonials'
-
+import About from './components/About'
+import Build from "./components/Build"
+import Questions from "./components/Questions"
 
 
 
@@ -71,13 +73,13 @@ async function handleJobDescriptionInput() {
       </div>
       <div className=" relative flex gap-4 items-center justify-center flex-col min-h-screen">
       <PageHeader />
-      <div className="flex flex-col gap-20 items-center">
+      <Build search ={search} setSearch ={setSearch} handleJobDescriptionInput ={handleJobDescriptionInput} />
+      <About />
+      <Testimonials />
+      <Questions />
+      
+      {/* <div className="flex flex-col gap-20 items-center">
         <div className = "flex flex-row gap-4 items-center justify-center">
-          {/* <Input placeholder = "enter job url" value = {search} onChange = {setSearch}/>
-          <Button onClick = {searchHandler}/> */}
-
-          {/* <p> Or </p> */}
-
           <Input placeholder = "Enter Job Description..." value = {search} onChange = {setSearch}/>
           <Button text = "Generate" Icon ={SparklesIcon} onClick = {handleJobDescriptionInput}/>
         </div>
@@ -103,7 +105,7 @@ async function handleJobDescriptionInput() {
           <EmptyOutputCard />
         }
       </div>
-      <Testimonials />
+      <Testimonials /> */}
       </div>
     </div>
   );
