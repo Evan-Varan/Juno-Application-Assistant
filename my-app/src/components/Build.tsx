@@ -3,6 +3,7 @@ import Button from './Button'
 import Input from './Input'
 import {SparklesIcon} from '@heroicons/react/24/solid'
 import floweroutline from '../assets/floweroutline.png'
+import OutputCard from './OutputCard'
 
 type buildProps = {
     search: string
@@ -13,6 +14,8 @@ type buildProps = {
 
 export default function Build({search, setSearch, handleJobDescriptionInput}: buildProps){
     return(
+     <div className = "flex flex-col gap-4">   
+       <h1 className="text-xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">CREATE WITH JUNO</h1> 
     <div className = "flex flex-col border-2 border-white/10 rounded-2xl items-center h-150">
         <div className = "flex flex-row justify-between w-300 py-4 px-4  bg-items-center text-center  relative ">
             <div className ="flex flex-col gap-4 w-125">
@@ -33,11 +36,15 @@ export default function Build({search, setSearch, handleJobDescriptionInput}: bu
                 <h1 className="text-5xl flex font-bold text-white ">Output</h1>
                 <div className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-sky-400"></div>
                 <p className="italic text-gray-300 text-left">View your created documents below.</p>
+                <div className= "flex flex-row gap-4 ">
+                    <OutputCard title = "Resume" contentText='Your Juno Created Resume'/>
+                    <OutputCard title = "Cover Letter" contentText='Your Juno Created Cover Letter'/>
+                </div>
                 
             </div>
             
         </div>
-        <div className = "flex flex-row items-center">
+        <div className = "flex flex-row items-center h-40">
             <img 
                 src={floweroutline} 
                 className="w-130 h-100 justify-left flex"
@@ -48,6 +55,7 @@ export default function Build({search, setSearch, handleJobDescriptionInput}: bu
                 /> 
         </div>
      
+    </div>
     </div>
     )
 }
