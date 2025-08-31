@@ -1,1 +1,10 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+body {
+  font-family: 'Nunito Sans', sans-serif; /* round, friendly body */
+}
+h1{
+  font-family: 'Playfair Display', serif; /* elegant, editorial headings */
+}
+
+

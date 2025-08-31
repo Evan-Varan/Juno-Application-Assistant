@@ -1,6 +1,6 @@
 import Button from "./Button";
 import JunoAIProfilePicture from "../assets/JunoAIProfilePicture.png"
-
+import { FaGithub   } from "react-icons/fa";
 export default function Navbar(){
     return(
         <div className="flex flex-row items-center justify-between w-300 h-15 py-12">
@@ -15,9 +15,12 @@ export default function Navbar(){
             </div>
             <div className= "flex text-white font-bold gap-10">
                 <button>Home</button>
-                <button>About</button>
                 <button>Builder</button>
-                <button>Contact</button>
+                <button>About</button>
+                <button>FAQ</button>
+                <a href="https://github.com/evan-varan" target="_blank">
+                    <FaGithub className="w-10 h-10 text-white hover:text-gray-400" />
+                </a>
                 <div className= "gap-4 flex">
                     <Button text ="Login"/>
                     <Button variant="secondary" text="Signup"/>
