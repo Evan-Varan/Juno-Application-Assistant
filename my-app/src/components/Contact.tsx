@@ -9,6 +9,7 @@ export default function Contact(){
             <h1 className="text-xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">REACH OUT</h1>
             <h1 className="text-5xl flex font-bold text-white ">CONTACT JUNO TODAY</h1>
             <div className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-sky-400"></div>
+            <p className="italic text-gray-300 text-left">Juno is based in Austin, Texas and available 24/7.</p>
             <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440952.6293508476!2d-98.0626223129064!3d30.29570088187667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b599a0cc032f%3A0x5d9b464bd469d57a!2sAustin%2C%20TX!5e0!3m2!1sen!2sus!4v1756670251641!5m2!1sen!2sus"
             className ="h-full"

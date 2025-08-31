@@ -18,6 +18,7 @@ export default function Navbar(){
                 <button>Builder</button>
                 <button>About</button>
                 <button>FAQ</button>
+                <button>Contact</button>
                 <a href="https://github.com/evan-varan" target="_blank">
                     <FaGithub className="w-10 h-10 text-white hover:text-gray-400" />
                 </a>
