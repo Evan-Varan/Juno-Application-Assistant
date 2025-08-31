@@ -1,14 +1,15 @@
 import JUNO from '../assets/JUNO.png'
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import blueflower3 from '../assets/blueflower3.png'
+import blueflower2 from '../assets/blueflower2.png'
 
 export default function Footer(){
     return(
         <div className ="flex justify-between w-450 h-100">
             <div className= "flex w-100">
                 <img 
-                    src={blueflower3} 
-                    className="w-75 h-75 rotate-45"
+                    src={blueflower2} 
+                    className="w-75 h-75"
                     />
             </div>
             <div className ="flex flex-col items-center w-150 justify-center gap-4">
@@ -41,7 +42,7 @@ export default function Footer(){
             <div className= "flex w-100">
                 <img 
                     src={blueflower3} 
-                    className="w-75 h-75 rotate-135 -scale-y-100"
+                    className="w-75 h-75 rotate-200 -scale-y-100"
                     />
             </div>
         </div>

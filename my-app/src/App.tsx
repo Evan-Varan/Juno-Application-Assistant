@@ -12,7 +12,7 @@ import About from './components/About'
 import Build from "./components/Build"
 import Questions from "./components/Questions"
 import Footer from "./components/Footer"
-
+import Contact from "./components/Contact"
 
 // function verifyURL(search: string) : boolean{
 //   const regexPattern = /^(https?:\/\/)([\w-]+(\.[\w-]+)+)(:[0-9]+)?(\/\S*)?$/i
@@ -67,7 +67,7 @@ async function handleJobDescriptionInput() {
   // const [output, setOutput] = useState<string>("")
 
   return (
-    <div className =" flex flex-col justify-center border-dashed bg-gradient-to-b from-black to-gray-900">
+    <div className =" flex flex-col justify-center items-center border-dashed bg-gradient-to-b from-black to-gray-900">
       <div className="flex justify-center">
       <Navbar />
       </div>
@@ -77,6 +77,7 @@ async function handleJobDescriptionInput() {
       <About />
       <Testimonials />
       <Questions />
+      <Contact />
       <Footer />
       
       {/* <div className="flex flex-col gap-20 items-center">
