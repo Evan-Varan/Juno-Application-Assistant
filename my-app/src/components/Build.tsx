@@ -35,25 +35,34 @@ export default function Build({search, setSearch, handleJobDescriptionInput}: bu
             <div className ="flex flex-col gap-4 w-150">
                 <h1 className="text-5xl flex font-bold text-white ">Output</h1>
                 <div className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-sky-400"></div>
+                {search ? 
+                <>
                 <p className="italic text-gray-300 text-left">View your created documents below.</p>
                 <div className= "flex flex-row gap-4 ">
                     <OutputCard title = "Resume" contentText='Your Juno Created Resume'/>
                     <OutputCard title = "Cover Letter" contentText='Your Juno Created Cover Letter'/>
-                </div>
+                </div> 
+                </> : 
+                <>
+                <p className="italic text-gray-300 text-left">Enter a job description to see your outputted documents below.</p>
+
+                </>
+                }
                 
             </div>
             
         </div>
-        <div className = "flex flex-row items-center h-40">
+        <div className={`flex flex-row items-center ${search ? "-mt-17" : "mt-13"}`}>
             <img 
                 src={floweroutline} 
-                className="w-130 h-100 justify-left flex"
-                />
+                className="w-130 justify-left flex"
+            />
             <img 
                 src={floweroutline} 
-                className="w-130 h-100 justify-right flex"
-                /> 
+                className="w-130 justify-right flex"
+            /> 
         </div>
+
      
     </div>
     </div>

@@ -18,10 +18,14 @@ export default function Contact(){
         </div>
         <div className ="flex flex-col h-145 items-center justify-center gap-16 border-white/10 border-2 relative rounded-2xl bg-gray-900 w-140">
             <div className ="flex flex-col gap-8">
+                {/* <h1 className="text-3xl flex font-bold text-white"> Let us know how we can help.</h1> */}
                 <Input placeholder = "Enter your full name"/>
                 <Input placeholder = "Enter your email"/>
                 <Input placeholder = "Enter your phone number"/>
-                <Input placeholder = "Type your message" height = "h-50"/>
+                <textarea
+                placeholder="Type your message..."
+                className="w-80 h-40 px-2 py-2 border border-solid rounded-xl border-gray-500 bg-gray-700 text-white"
+                />
 
                 
             </div>
