@@ -1,5 +1,3 @@
-//https://dribbble.com/shots/24764318-SH-Testimonials
-//https://dribbble.com/shots/23680267-Testimonials-User-Reviews-Carousel
 
 type testimonialProps = {
     contentText: string,
