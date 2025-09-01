@@ -1,12 +1,8 @@
 import { useState, useRef} from 'react'
 import './App.css'
-import OutputCard from './components/OutputCard'
-import EmptyOutputCard from './components/EmptyOutputCard'
-import Button from './components/Button'
-import Input from './components/Input'
+
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
-import {SparklesIcon} from '@heroicons/react/24/solid'
 import Testimonials from './components/Tesimonials'
 import About from './components/About'
 import Build from "./components/Build"

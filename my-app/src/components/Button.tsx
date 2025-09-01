@@ -1,6 +1,6 @@
 
 type buttonProps ={
-    onClick: () => void
+    onClick?: () => void
     text: string,
     Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
     variant?: "primary" | "secondary"

@@ -25,9 +25,8 @@ const faqs = [
         question: "What kinds of tasks can JunoAI help with?",
         answer:
         "JunoAI can draft text, summarize information, generate ideas, assist with research, and even help with technical explanations. It’s a versatile partner for work, study, and creativity."
-    }
-        
-    ]
+    }        
+]
 
 
 export default function Accordian(){
