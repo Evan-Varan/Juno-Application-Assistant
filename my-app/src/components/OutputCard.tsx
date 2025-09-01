@@ -25,11 +25,11 @@ export default function OutputCard({title, contentText} : cardProps) {
             <div className = "flex relative items-center w-32 h-32">
                 <img 
                     src={pdfblue} 
-                    className="w-10 h-14 absolute ransform -rotate-6 left-4 top-10 z-20"
+                    className="w-12 h-18 absolute ransform -rotate-6 left-2 top-10 z-20"
                     />
                 <img 
                     src={pdfgrey} 
-                    className="w-10 h-14 absolute transform rotate-6 left-8 top-10 z-10"
+                    className="w-12 h-18 absolute transform rotate-6 left-6 top-10 z-10"
                     />
             </div>
         </div>

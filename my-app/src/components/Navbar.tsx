@@ -1,7 +1,16 @@
 import Button from "./Button";
 import JunoAIProfilePicture from "../assets/JunoAIProfilePicture.png"
 import { FaGithub   } from "react-icons/fa";
-export default function Navbar(){
+
+type navbarProps = {
+    buildRef: React.RefObject<HTMLDivElement | null>,
+    aboutRef: React.RefObject<HTMLDivElement| null>,
+    faqRef: React.RefObject<HTMLDivElement | null>,
+    contactRef: React.RefObject<HTMLDivElement | null>,
+}
+
+
+export default function Navbar({buildRef,aboutRef,faqRef,contactRef} : navbarProps){
     return(
         <div className="flex flex-row items-center justify-between w-300 h-15 py-12">
             <div className = "items-center flex ">
@@ -15,10 +24,10 @@ export default function Navbar(){
             </div>
             <div className= "flex text-white font-bold gap-10">
                 <button>Home</button>
-                <button>Builder</button>
-                <button>About</button>
-                <button>FAQ</button>
-                <button>Contact</button>
+                <button onClick = {() => buildRef.current?.scrollIntoView({behavior: "smooth"})}>Builder</button>
+                <button onClick = {() => aboutRef.current?.scrollIntoView({behavior: "smooth"})}>About</button>
+                <button onClick = {() => faqRef.current?.scrollIntoView({behavior: "smooth"})}>FAQ</button>
+                <button onClick = {() => contactRef.current?.scrollIntoView({behavior: "smooth"})}>Contact</button>
                 <a href="https://github.com/evan-varan" target="_blank">
                     <FaGithub className="w-10 h-10 text-white hover:text-gray-400" />
                 </a>

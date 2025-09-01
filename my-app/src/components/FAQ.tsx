@@ -1,7 +1,7 @@
 import Accordian from "./Accordian";
 import BlueFlower from "../assets/blueflower.png"
 
-export default function Questions(){
+export default function FAQ(){
     return(
     <div className = "flex flex-row justify-between w-300 py-4 px-4 h-200 bg-items-center text-center relative rounded-2xl">
         <div className ="flex flex-col items-center gap-4 w-150">

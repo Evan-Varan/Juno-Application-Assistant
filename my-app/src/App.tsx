@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { useState, useRef} from 'react'
 import './App.css'
 import OutputCard from './components/OutputCard'
 import EmptyOutputCard from './components/EmptyOutputCard'
 import Button from './components/Button'
 import Input from './components/Input'
-import PageHeader from './components/PageHeader'
+import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import {SparklesIcon} from '@heroicons/react/24/solid'
 import Testimonials from './components/Tesimonials'
 import About from './components/About'
 import Build from "./components/Build"
-import Questions from "./components/Questions"
+import FAQ from "./components/FAQ"
 import Footer from "./components/Footer"
 import Contact from "./components/Contact"
 
@@ -66,18 +66,31 @@ async function handleJobDescriptionInput() {
   const [showOutput, setShowOutput] = useState<boolean>(false)
   // const [output, setOutput] = useState<string>("")
 
+  const buildRef = useRef<HTMLDivElement>(null)
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const faqRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
+
   return (
     <div className =" flex flex-col justify-center items-center border-dashed bg-gradient-to-b from-black to-gray-900">
       <div className="flex justify-center">
-      <Navbar />
+      <Navbar buildRef = {buildRef} aboutRef = {aboutRef} faqRef = {faqRef} contactRef = {contactRef}/>
       </div>
       <div className=" relative flex gap-16 items-center justify-center flex-col min-h-screen">
-      <PageHeader />
-      <Build search ={search} setSearch ={setSearch} handleJobDescriptionInput ={handleJobDescriptionInput} />
-      <About />
-      <Testimonials />
-      <Questions />
-      <Contact />
+      <Hero buildRef={buildRef} aboutRef={aboutRef}/>
+      <div ref ={buildRef}>
+        <Build search ={search} setSearch ={setSearch} handleJobDescriptionInput ={handleJobDescriptionInput} />
+      </div>
+      <div ref ={aboutRef}>
+        <About />
+        <Testimonials />
+      </div>
+      <div ref ={faqRef}>
+        <FAQ />
+      </div>
+      <div ref ={contactRef}>
+        <Contact />
+      </div>
       <Footer />
       
       {/* <div className="flex flex-col gap-20 items-center">
