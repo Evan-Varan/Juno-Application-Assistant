@@ -41,26 +41,7 @@ export default function App() {
   //   }
   // }
 
-async function handleJobDescriptionInput() {
-  console.log("calling /api/jobparser with", search);
-  try {
-    const res = await fetch("http://localhost:5005/api/jobparser", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ jobText: search }),
-    });
-    const data : JobApplicationPackage = await res.json();
-    setJobData(data);
-    setShowOutput(true);
-  } catch (e) {
-    console.error("request failed", e);
-  }
-}
 
-  const [jobData, setJobData] = useState<JobApplicationPackage>()
-  const [search, setSearch] = useState<string>("");
-  const [showOutput, setShowOutput] = useState<boolean>(false)
-  // const [output, setOutput] = useState<string>("")
 
   const buildRef = useRef<HTMLDivElement>(null)
   const aboutRef = useRef<HTMLDivElement>(null)
@@ -75,7 +56,7 @@ async function handleJobDescriptionInput() {
       <div className=" relative flex gap-16 items-center justify-center flex-col min-h-screen">
       <Hero buildRef={buildRef} aboutRef={aboutRef}/>
       <div ref ={buildRef}>
-        <Build search ={search} setSearch ={setSearch} handleJobDescriptionInput ={handleJobDescriptionInput} />
+        <Build/>
       </div>
       <div ref ={aboutRef}>
         <About />
