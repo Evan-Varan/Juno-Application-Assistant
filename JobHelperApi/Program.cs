@@ -37,7 +37,35 @@ app.UseCors();
 //JOB PARSER ENDPOINT. Client will call this endpoint with the raw text input.
 app.MapPost("/api/jobparser", async (OpenAIClient client, JobTextInput input) =>
 {
-    var system = "You extract job information. Respond with JSON only using keys: title, company, description, techStack(array)";
+    var system = @"
+You are an AI that extracts structured data from job postings.
+
+Given a raw job description, identify and return:
+- Job Title
+- Company (if mentioned)
+- Location (if mentioned)
+- Employment type (full-time, contract, internship, etc.)
+- Tech stack: a list of technologies/tools/frameworks with relative importance (each as {Name, Weight})
+- Skills: a list of skills mentioned (soft and hard)
+- Responsibilities: bullet point list
+- Requirements/Qualifications: bullet point list
+
+Always return JSON that matches this schema:
+
+{
+  ""Title"": string,
+  ""Company"": string,
+  ""Location"": string,
+  ""EmploymentType"": string,
+  ""TechStack"": [
+    { ""Name"": string, ""Weight"": number }
+  ],
+  ""Skills"": [ string ],
+  ""Responsibilities"": [ string ],
+  ""Requirements"": [ string ]
+}
+";
+
     var user = $"Job description:\n{input.JobText}"; //user role - what the user types to the AI
 
     //ChatGPT Request

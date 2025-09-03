@@ -1,0 +1,63 @@
+{
+  "sections": [
+    {
+      "key": "frontend",
+      "priority": 1,
+      "skills": [
+        { "id": "javascript", "name": "JavaScript" },
+        { "id": "typescript", "name": "TypeScript" },
+        { "id": "react", "name": "React" },
+        { "id": "html5", "name": "HTML5" },
+        { "id": "css", "name": "CSS" },
+        { "id": "tailwind", "name": "Tailwind CSS" },
+        { "id": "nextjs", "name": "Next.js" },
+        { "id": "jest", "name": "JEST" },
+        { "id": "rtl", "name": "RTL" }
+      ]
+    },
+    {
+      "key": "backend",
+      "priority": 2,
+      "skills": [
+        { "id": "csharp", "name": "C#" },
+        { "id": "python", "name": "Python" },
+        { "id": "java", "name": "Java" },
+        { "id": "cpp", "name": "C++" },
+        { "id": "go", "name": "Go" },
+        { "id": "netcore", "name": ".NET Core" },
+        { "id": "restapis", "name": "REST APIs" },
+        { "id": "aspnet", "name": "ASP.NET" },
+        { "id": "nodejs", "name": "Node.js" },
+        { "id": "aws-sdk", "name": "AWS SDK" }
+      ]
+    },
+    {
+      "key": "databases",
+      "priority": 3,
+      "skills": [
+        { "id": "sql", "name": "SQL" },
+        { "id": "nosql", "name": "NoSQL" },
+        { "id": "tsql", "name": "T-SQL" },
+        { "id": "mysql", "name": "MySQL" },
+        { "id": "sqlserver", "name": "Microsoft SQL Server" },
+        { "id": "ssms", "name": "SSMS" }
+      ]
+    },
+    {
+      "key": "tools-cloud",
+      "priority": 4,
+      "skills": [
+        { "id": "git", "name": "Git" },
+        { "id": "github", "name": "GitHub" },
+        { "id": "docker", "name": "Docker" },
+        { "id": "aws", "name": "AWS" },
+        { "id": "dynamodb", "name": "AWS DynamoDB" },
+        { "id": "lambda", "name": "AWS Lambda" },
+        { "id": "iamroles", "name": "AWS IAM Roles" },
+        { "id": "s3", "name": "AWS S3" },
+        { "id": "apprunner", "name": "AWS App Runner" }
+        
+      ]
+    }
+  ]
+}

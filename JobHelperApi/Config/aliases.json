@@ -1,0 +1,174 @@
+
+{
+  "js": "javascript",
+  "es6": "javascript",
+  "es2015": "javascript",
+  "ecmascript": "javascript",
+  "javascript": "javascript",
+
+  "reactjs": "react",
+  "react.js": "react",
+  "react js": "react",
+  "react": "react",
+
+  "html": "html5",
+  "html 5": "html5",
+  "html5": "html5",
+
+  "css3": "css",
+  "css": "css",
+
+  "tailwindcss": "tailwind",
+  "tailwind css": "tailwind",
+  "tailwind": "tailwind",
+
+  "next": "nextjs",
+  "next js": "nextjs",
+  "next.js": "nextjs",
+  "nextjs": "nextjs",
+
+  "jestjs": "jest",
+  "jest": "jest",
+
+  "c#": "csharp",
+  "c sharp": "csharp",
+  "c-sharp": "csharp",
+  "csharp": "csharp",
+
+  "python": "python",
+  "py": "python",
+  "cpython": "python",
+
+  "java": "java",
+  "jdk": "java",
+  "java se": "java",
+
+  "c++": "cpp",
+  "c plus plus": "cpp",
+  "cplusplus": "cpp",
+  "cpp": "cpp",
+
+  "go": "go",
+  "golang": "go",
+
+  ".net core": "netcore",
+  "dotnet core": "netcore",
+  "dotnetcore": "netcore",
+  ".net": "netcore",
+  "dotnet": "netcore",
+  ".net 5": "netcore",
+  ".net 6": "netcore",
+  ".net 7": "netcore",
+  ".net 8": "netcore",
+
+  "rest": "restapis",
+  "rest api": "restapis",
+  "rest apis": "restapis",
+  "restful": "restapis",
+  "restful api": "restapis",
+  "restful apis": "restapis",
+  "http api": "restapis",
+  "http apis": "restapis",
+  "web api": "restapis",
+  "web apis": "restapis",
+
+  "asp.net": "aspnet",
+  "asp net": "aspnet",
+  "aspnet": "aspnet",
+  "asp.net core": "aspnet",
+  "aspnet core": "aspnet",
+
+  "node": "nodejs",
+  "node js": "nodejs",
+  "node.js": "nodejs",
+  "nodejs": "nodejs",
+
+  "aws sdk": "aws-sdk",
+  "aws-sdk": "aws-sdk",
+  "awssdk": "aws-sdk",
+  "aws sdk for .net": "aws-sdk",
+  "aws sdk for dotnet": "aws-sdk",
+  "aws .net sdk": "aws-sdk",
+  "amazon sdk for .net": "aws-sdk",
+  "aws sdk for c#": "aws-sdk",
+
+  "sql": "sql",
+  "structured query language": "sql",
+
+  "nosql": "nosql",
+  "no sql": "nosql",
+  "nonrelational": "nosql",
+  "non-relational": "nosql",
+  "document store": "nosql",
+  "key value store": "nosql",
+
+  "tsql": "tsql",
+  "t sql": "tsql",
+  "transact-sql": "tsql",
+  "transact sql": "tsql",
+
+  "mysql": "mysql",
+  "my sql": "mysql",
+
+  "mssql": "sqlserver",
+  "ms sql": "sqlserver",
+  "sql server": "sqlserver",
+  "sqlserver": "sqlserver",
+  "microsoft sql server": "sqlserver",
+
+  "ssms": "ssms",
+  "sql server management studio": "ssms",
+
+  "git": "git",
+  "git scm": "git",
+  "git vcs": "git",
+  "git version control": "git",
+  "git cli": "git",
+
+  "github": "github",
+  "git hub": "github",
+  "gh": "github",
+  "github.com": "github",
+
+  "docker": "docker",
+  "dockerfile": "docker",
+  "docker compose": "docker",
+  "containerization": "docker",
+  "containers": "docker",
+
+  "aws": "aws",
+  "amazon web services": "aws",
+  "aws cloud": "aws",
+
+  "dynamodb": "dynamodb",
+  "amazon dynamodb": "dynamodb",
+  "aws dynamodb": "dynamodb",
+  "dynamo db": "dynamodb",
+  "ddb": "dynamodb",
+
+  "lambda": "lambda",
+  "aws lambda": "lambda",
+  "amazon lambda": "lambda",
+  "serverless functions": "lambda",
+
+  "iam": "iamroles",
+  "aws iam": "iamroles",
+  "iam roles": "iamroles",
+  "iam role": "iamroles",
+  "iam policy": "iamroles",
+  "iam policies": "iamroles",
+  "identity and access management": "iamroles",
+
+  "s3": "s3",
+  "aws s3": "s3",
+  "amazon s3": "s3",
+  "simple storage service": "s3",
+  "amazon simple storage service": "s3",
+  "s3 bucket": "s3",
+  "s3 buckets": "s3",
+
+  "app runner": "apprunner",
+  "app-runner": "apprunner",
+  "aws app runner": "apprunner",
+  "amazon app runner": "apprunner"
+}

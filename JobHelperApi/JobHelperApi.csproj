@@ -8,11 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Aspose.Words" Version="25.8.0" />
-    <PackageReference Include="DocX" Version="4.0.25105.5786" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.16" />
     <PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1004" />
     <PackageReference Include="OpenAI-DotNet" Version="8.8.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Xceed.Words.NET" Version="1.9.0" />
   </ItemGroup>
 
 </Project>
