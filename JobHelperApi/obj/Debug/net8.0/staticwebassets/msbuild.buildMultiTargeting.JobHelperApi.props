@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\JobHelperApi.props" />
-</Project>
