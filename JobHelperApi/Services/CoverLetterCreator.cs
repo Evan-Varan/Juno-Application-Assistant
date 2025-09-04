@@ -1,4 +1,4 @@
-namespace JobHelperApi.Helpers;
+namespace JobHelperApi.Services;
 
 using JobHelperApi.Models;
 
@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 
 
-public class DocumentCreator
+public class CoverLetterCreator
 {
     public static void WriteCoverLetter(JobApplicationPackage package)
     {

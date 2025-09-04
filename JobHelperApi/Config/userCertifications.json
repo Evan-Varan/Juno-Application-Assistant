@@ -1,0 +1,34 @@
+{
+    "certifications": [
+        {
+            "name": "C# Programming",
+            "dateissued": "July 2025",
+            "issuedby" : "Microsoft",
+            "tags": ["C#"]
+        },
+        {
+            "name": "Advanced React",
+            "dateissued": "Aug 2025",
+            "issuedby" : "Meta",
+            "tags": ["React"]
+        },
+        {
+            "name": "Version Control",
+            "dateissued": "July 2025",
+            "issuedby" : "Meta",
+            "tags": ["Git", "GitHub", "Version Control"]
+        },
+        {
+            "name": "TypeScript",
+            "dateissued": "Jun 2025",
+            "issuedby" : "CodeAcademy",
+            "tags": ["TypeScript"]
+        },
+        {
+            "name": "Programming with JavaScript",
+            "dateissued": "Jun 2025",
+            "issuedby" : "Meta",
+            "tags": ["JavaScript"]
+        }
+    ]
+}

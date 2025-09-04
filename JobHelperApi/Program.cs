@@ -3,7 +3,6 @@ using OpenAI.Chat;
 using JobHelperApi.Models;
 using System.Text.Json;
 using System.Net.Http.Json;
-using JobHelperApi.Helpers;
 using JobHelperApi.Services;
 
 
@@ -151,12 +150,9 @@ Always return JSON that matches this schema:
         CoverLetter = coverLetter! 
     };
 
-    // DocumentCreator.WriteCoverLetter(package);
+    // CoverLetterCreator.WriteCoverLetter(package);
     var skills = new SkillFormatter();
     var ouputtedSkills = skills.FormatSkills(job.TechStack);
-
-    Console.WriteLine();
-    Console.WriteLine("Program cs output:\n--------------------------");
     foreach (var entry in ouputtedSkills)
     {
         Console.Write($"{entry.Key}: ");
@@ -166,7 +162,11 @@ Always return JSON that matches this schema:
         }
         Console.WriteLine();
     }
+    CertificationChooser cc = new CertificationChooser();
+    cc.SortByWeights(job.TechStack);
 
+
+    
     return Results.Ok(package);
 
 });
