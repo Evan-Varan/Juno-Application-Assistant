@@ -11,7 +11,7 @@ namespace JobHelperApi.Services;
 public class SkillFormatter
 {
 
-    private JobParseResult jobParseResult;
+    private List<TechItem> techStack;
     public record CatalogSkill(
         [property: JsonPropertyName("id")] string Id,
         [property: JsonPropertyName("name")] string Name
@@ -32,7 +32,7 @@ public class SkillFormatter
         [property: JsonPropertyName("sections")] List<CatalogEntry> Sections
     );
 
-    
+
     public record InventoryExtraItem(
     [property: JsonPropertyName("sectionName")] string SectionName,
     [property: JsonPropertyName("skills")] List<string> Skills
@@ -54,42 +54,35 @@ public class SkillFormatter
     };
 
     //This will return all skills to the api ENTRY POINT
-    public string FormatSkills(JobParseResult jpr)
+    public Dictionary<string, List<string>> FormatSkills(List<TechItem> tS)
     {
-        jobParseResult = jpr;
-        Console.WriteLine();
-        Console.WriteLine($"Extractor Outputted:\n----------------");
-        Extractor();
-        Console.WriteLine();
-        Console.WriteLine($"Normalizer Outputted:\n----------------");
+        techStack = tS;
+        // Console.WriteLine();
+        // Console.WriteLine($"Normalizer Outputted:\n----------------");
         Normalizer();
-        Console.WriteLine();
-        Console.WriteLine($"Check Alias Outputted:\n----------------");
+        // Console.WriteLine();
+        // Console.WriteLine($"Check Alias Outputted:\n----------------");
         CheckAliases();
-        Console.WriteLine();
-        Console.WriteLine($"Honesty Gate Outputted:\n----------------");
+        // Console.WriteLine();
+        // Console.WriteLine($"Honesty Gate Outputted:\n----------------");
         HonestyGate();
-        Console.WriteLine();
-        Console.WriteLine($"Catalog Reserver Outputted:\n----------------");
+        // Console.WriteLine();
+        // Console.WriteLine($"Catalog Reserver Outputted:\n----------------");
         CatalogReserver();
-        Console.WriteLine($"Ranker Outputted:\n----------------");
+        // Console.WriteLine();
+        // Console.WriteLine($"Ranker Outputted:\n----------------");
         Ranker();
-        Console.WriteLine($"InventoryAdder Outputted:\n----------------");
+        // Console.WriteLine();
+        // Console.WriteLine($"InventoryAdder Outputted:\n----------------");
         InventoryAdder();
-        return "";
-    }
-    private void Extractor()
-    {
-        //Testing data -> should just send the api data straight in
-
-        foreach (var tech in jobParseResult.TechStack)
-        {
-            Console.WriteLine($"Name: {tech.Name}, Weight: {tech.Weight}");
-        }
+        // Console.WriteLine();
+        // Console.WriteLine($"Outputter Outputted:\n----------------");
+        Outputter();
+        return Outputter();
     }
     private void Normalizer()
     {
-        foreach (var tech in jobParseResult.TechStack)
+        foreach (var tech in techStack)
         {
             var name = tech.Name.ToLower().Trim();
             var listingSkill = new ListingSkill(name, tech.Weight);
@@ -100,7 +93,7 @@ public class SkillFormatter
         listingTechnologies.Add(new ListingSkill("java se", 7));
         listingTechnologies.Add(new ListingSkill("tailwind", 10));
         listingTechnologies.Add(new ListingSkill("jenkins", 1));
-        printList(listingTechnologies);
+        // printList(listingTechnologies);
     }
     private void CheckAliases()
     {
@@ -116,7 +109,7 @@ public class SkillFormatter
                 }
             }
         }
-        printList(listingTechnologies);
+        // printList(listingTechnologies);
     }
     private void HonestyGate()
     {
@@ -130,7 +123,7 @@ public class SkillFormatter
                 listingTechnologies.RemoveAt(i);
             }
         }
-        printList(listingTechnologies);
+        // printList(listingTechnologies);
     }
     private void CatalogReserver()
     {
@@ -151,10 +144,11 @@ public class SkillFormatter
                 }
             }
         }
-        printList(listingTechnologies);
-        Console.WriteLine();
-        Console.WriteLine($"Grouper Outputted:\n----------------");
-        printDict(groupedSections);
+        // printList(listingTechnologies);
+        // Console.WriteLine();
+        // Console.WriteLine($"Grouper Outputted:\n----------------");
+        // printDict(groupedSections);
+
     }
 
     private void Grouper(string sectionName, ListingSkill technologyName)
@@ -167,7 +161,7 @@ public class SkillFormatter
         {
             BubbleSort(section.Value);
         }
-        printDict(groupedSections);
+        // printDict(groupedSections);
     }
 
     private void InventoryAdder()
@@ -187,18 +181,32 @@ public class SkillFormatter
                 }
             }
         }
-        printDict(groupedSections);
+        // printDict(groupedSections);
     }
-    private void Outputter() { }
+    private Dictionary<string, List<string>> Outputter()
+    {
+        var dict = new Dictionary<string, List<string>>();
+
+        foreach (var section in groupedSections)
+        {
+            dict.Add(section.Key, new List<string>());
+            foreach (var value in section.Value)
+            {
+                dict[section.Key].Add(value.Name);
+            }
+        }
+        // printStringDict(dict);
+        return dict;
+    }
     private void BubbleSort(List<ListingSkill> skills)
     {
         for (int i = 0; i < skills.Count - 1; i++)
         {
             for (int k = 0; k < skills.Count - i - 1; k++)
             {
-                if (skills[k].Weight < skills[k+1].Weight)
+                if (skills[k].Weight < skills[k + 1].Weight)
                 {
-                    Swap(skills, k, k+1);
+                    Swap(skills, k, k + 1);
                 }
             }
         }
@@ -209,23 +217,34 @@ public class SkillFormatter
         skills[indexA] = skills[indexB];
         skills[indexB] = temp;
     }
-    private void printList(List<ListingSkill> list)
-    {
-        foreach (var listingSkill in list)
-        {
-            Console.Write($"[{listingSkill.Name}, {listingSkill.Weight}], ");
-        }
-        Console.WriteLine();
-    }
-    private void printDict(Dictionary<string, List<ListingSkill>> dict) {
-        foreach (var entry in dict)
-        {
-            Console.Write($"{entry.Key}: ");
-            foreach (var item in entry.Value)
-            {
-                Console.Write($"[{item.Name}, {item.Weight}], ");
-            }
-            Console.WriteLine();
-        }
-    }
+    // private void printList(List<ListingSkill> list)
+    // {
+    //     foreach (var listingSkill in list)
+    //     {
+    //         Console.Write($"[{listingSkill.Name}, {listingSkill.Weight}], ");
+    //     }
+    //     Console.WriteLine();
+    // }
+    // private void printDict(Dictionary<string, List<ListingSkill>> dict) {
+    //     foreach (var entry in dict)
+    //     {
+    //         Console.Write($"{entry.Key}: ");
+    //         foreach (var item in entry.Value)
+    //         {
+    //             Console.Write($"[{item.Name}, {item.Weight}], ");
+    //         }
+    //         Console.WriteLine();
+    //     }
+    // }
+    // private void printStringDict(Dictionary<string, List<string>> dict) {
+    //     foreach (var entry in dict)
+    //     {
+    //         Console.Write($"{entry.Key}: ");
+    //         foreach (var item in entry.Value)
+    //         {
+    //             Console.Write($"{item}, ");
+    //         }
+    //         Console.WriteLine();
+    //     }
+    // }
 }
