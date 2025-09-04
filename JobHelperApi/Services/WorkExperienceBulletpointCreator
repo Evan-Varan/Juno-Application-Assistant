@@ -1,0 +1,5 @@
+//Creates bullet points for each work experience. Should take into account job description and job title as well as technologies used.
+//This will wrap ai prompts to create the bulletpoints.
+//Each job description will have details and tech that goes with them.
+
+//Repeat the same logic for Project descriptions
