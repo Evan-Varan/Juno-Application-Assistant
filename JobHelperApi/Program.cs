@@ -4,6 +4,7 @@ using JobHelperApi.Models;
 using System.Text.Json;
 using System.Net.Http.Json;
 using JobHelperApi.Helpers;
+using JobHelperApi.Services;
 
 
 
@@ -150,7 +151,9 @@ Always return JSON that matches this schema:
         CoverLetter = coverLetter! 
     };
 
-    DocumentCreator.WriteCoverLetter(package);
+    // DocumentCreator.WriteCoverLetter(package);
+    var skills = new SkillFormatter();
+    skills.FormatSkills(job);
     return Results.Ok(package);
 
 });

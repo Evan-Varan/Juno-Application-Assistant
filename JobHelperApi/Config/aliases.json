@@ -1,10 +1,16 @@
 
 {
   "js": "javascript",
+  "javascript (js)": "javascript",
   "es6": "javascript",
   "es2015": "javascript",
   "ecmascript": "javascript",
   "javascript": "javascript",
+
+  "ts": "typescript",
+  "typescript": "typescript",
+  "typescript (ts)": "typescript",
+  "tsx": "typescript",
 
   "reactjs": "react",
   "react.js": "react",

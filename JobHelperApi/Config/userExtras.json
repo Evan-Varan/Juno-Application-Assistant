@@ -1,0 +1,52 @@
+{
+  "sections": [
+    {
+        "sectionName": "frontend",
+        "skills" : [
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "HTML5",
+            "CSS",
+            "Tailwind CSS",
+            "Next.js",
+            "JEST"
+        ]
+    },
+    {
+        "sectionName": "backend",
+        "skills" : [
+            "C#",
+            "Python",
+            "Java",
+            "C++",
+            "Go",
+            ".NET Core",
+            "REST APIs",
+            "ASP.NET",
+            "Node.js",
+            "JEST"
+        ]
+    },
+    {
+        "sectionName": "databases",
+        "skills" : [
+            "SQL",
+            "NoSQL",
+            "T-SQL",
+            "MySQL",
+            "Microsoft SQL Server",
+            "SSMS"
+        ]
+    },
+    {
+        "sectionName": "tools-cloud",
+        "skills" : [
+            "Git",
+            "GitHub",
+            "Docker",
+            "AWS"
+        ]
+    }
+  ]
+}
