@@ -153,7 +153,20 @@ Always return JSON that matches this schema:
 
     // DocumentCreator.WriteCoverLetter(package);
     var skills = new SkillFormatter();
-    skills.FormatSkills(job);
+    var ouputtedSkills = skills.FormatSkills(job.TechStack);
+
+    Console.WriteLine();
+    Console.WriteLine("Program cs output:\n--------------------------");
+    foreach (var entry in ouputtedSkills)
+    {
+        Console.Write($"{entry.Key}: ");
+        foreach (var item in entry.Value)
+        {
+            Console.Write($"{item}, ");
+        }
+        Console.WriteLine();
+    }
+
     return Results.Ok(package);
 
 });
