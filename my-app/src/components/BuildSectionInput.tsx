@@ -13,13 +13,16 @@ type buildInputProps = {
     setOutputDescription: (value: string) => void
     setLoading: (value: boolean) => void
 }
-
+type listingSkill = {
+    name: string,
+    weight: number
+}
 type JobApplicationPackage = {
   listingInfo: {
     title: string,
     company: string,
     description: string,
-    techStack: string[]
+    techStack: listingSkill[]
   },
   coverLetter:{
     coverLetterText: string
@@ -87,7 +90,7 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
                     <p className = "italic text-gray-300 text-left"><strong>Company:</strong> {jobData?.listingInfo.company}</p>
                     <p className = "italic text-gray-300 text-left"><strong>Description:</strong> {jobData?.listingInfo.description}</p>
                     <ul className = "italic text-gray-300 text-left"><strong>Tech Stack:</strong>
-                    {jobData?.listingInfo.techStack?.map((tech,key) => <li key={key}>{tech}</li>)}
+                    {jobData?.listingInfo.techStack?.map((tech,key) => <li key={key}>{tech.name}</li>)}
                     </ul>
                 </div> : null
             }
