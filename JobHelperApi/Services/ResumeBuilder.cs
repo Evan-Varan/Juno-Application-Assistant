@@ -1,60 +1,100 @@
 using Xceed.Words.NET;
 using Xceed.Document.NET;
+
 using JobHelperApi.Models;
 using JobHelperApi.Services;
 using Certification = JobHelperApi.Services.CertificationChooser.Certification;
+using System.Diagnostics;
 
 namespace JobHelperApi.Services;
 public class ResumeBuiler
 {
     public void WriteResume(Dictionary<string, List<string>> skills, List<Certification> certifications, JobApplicationPackage jAPack)
     {
-        var templateDoc = "C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/ResumeJobHelperTemplate.docx";
-        var resumeDocxDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/Resume-{jAPack.ListingInfo.Company}.docx";
-        var resumePDFDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumePDFs/Resume-{jAPack.ListingInfo.Company}.pdf";
+        var templatePath = "C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/ResumeJobHelperTemplate.docx";
+        var ResumeDocxDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/Resume-{jAPack.ListingInfo.Company}.docx";
+        var ResumePDFDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumePDFs/Resume-{jAPack.ListingInfo.Company}.pdf";
 
-        Directory.CreateDirectory(Path.GetDirectoryName("C:/Users/Brick/Documents/GitHub/JobHelper-Application/CoverLetterDocs")!);
-        using var doc = DocX.Load(templateDoc);
+        Directory.CreateDirectory(Path.GetDirectoryName(ResumeDocxDirectory)!);
+        Directory.CreateDirectory(Path.GetDirectoryName(ResumePDFDirectory)!);
+
+        var bytes = File.ReadAllBytes(templatePath);
+        using var ms = new MemoryStream(bytes, writable: true);
+        using var doc = DocX.Load(ms);
 
         InsertSkills(skills, doc);
         InsertCerts(certifications, doc);
-        // doc.ReplaceText("{{Date}}", package.CoverLetter.Date ?? "");
 
-        // doc.ReplaceText("{{Company}}", package.ListingInfo.Company ?? "");
-
-        // var body = (package.CoverLetter.CoverLetterText ?? string.Empty)
-        //         .Replace("\r\n", Environment.NewLine)
-        //         .Trim();
-
-        // doc.ReplaceText("{{CoverLetterText}}", body);
-
-        // doc.SaveAs(coverLetterDocxDirectory);
-        // ConvertDocxToPdf(coverLetterDocxDirectory, coverLetterPDFDirectory);
-        // doc.ReplaceText("{{CoverLetterText}}", body);
+        doc.SaveAs(ResumeDocxDirectory);
+        
+        ConvertDocxToPdf(ResumeDocxDirectory, ResumePDFDirectory);
     }
     private void InsertSkills(Dictionary<string, List<string>> skills, DocX templateDoc)
     {
         foreach (var skillType in skills)
         {
-            Console.WriteLine(CreateStringFromList(skillType.Value));
+            string skillLine = string.Join(", ", skillType.Value);
+            templateDoc.ReplaceText($"{{{{{skillType.Key}}}}}", skillLine);
         }
     }
-    private string CreateStringFromList(List<string> list)
+    private void InsertCerts(List<Certification> certifications, DocX doc)
     {
-        string returnString = "";
-        for (int i = 0; i < list.Count; i++)
+        // find the placeholder
+        Paragraph anchor = null;
+        int anchorIndex = -1;
+        for (int j = 0; j < doc.Paragraphs.Count; j++)
         {
-            if (i != list.Count - 1)
+            if (doc.Paragraphs[j].Text.Contains("{{certifications}}"))
             {
-                returnString += $"{list[i]}, ";
-            }
-            else
-            {
-                returnString += $"{list[i]}";
+                anchor = doc.Paragraphs[j];
+                anchorIndex = j;
+                break;
             }
         }
-        return returnString;
+        if (anchor == null) return;
+
+        // build bullet list with empty bullets
+        // create the list definition WITHOUT the starter bullet
+        var list = doc.AddList("", 0, ListItemType.Bulleted, 1); // pass in a level > 0 to skip first item
+
+        for (int i = 0; i < certifications.Count; i++)
+            doc.AddListItem(list, ""); // blank bullet
+
+        // insert bullets where anchor is
+        anchor.InsertListAfterSelf(list);
+
+        // format each bullet paragraph
+        for (int i = 0; i < certifications.Count; i++)
+        {
+            var cert = certifications[i];
+            var bullet = doc.Paragraphs[anchorIndex + 1 + i];
+
+            bullet.Append(cert.Name).Bold().FontSize(10);
+            bullet.Append($", {cert.DateIssued} - ").FontSize(10);
+            bullet.Append($"Issued by {cert.IssuedBy}").Italic().FontSize(10);
+            bullet.SpacingAfter(0); // extra space between bullets if you want
+        }
+
+        // remove the placeholder
+        doc.RemoveParagraph(anchor);
+
+        // remove the last stray bullet (the extra one)
+        doc.RemoveParagraphAt(anchorIndex + certifications.Count);
     }
-    private void InsertCerts(List<Certification> certifications, DocX templateDoc) { }
-    private void ConvertDocxToPdf() { }
+
+    public static void ConvertDocxToPdf(string inputPath, string outputPath)
+    {
+        var psi = new ProcessStartInfo
+        {
+            FileName = @"C:\Program Files\LibreOffice\program\soffice.exe",
+            Arguments = $" --convert-to pdf \"{inputPath}\" --outdir \"{Path.GetDirectoryName(outputPath)}\"",
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+        
+        using var process = Process.Start(psi);
+        process.WaitForExit();
+    }
 }
