@@ -56,7 +56,6 @@ public class CertificationChooser
     }
     public void CheckNumberOfCertification(List<Certification> addedCerts, Certifications userCertifications)
     {
-        Console.WriteLine("CheckNumberOfCertifications Hit");
         if (addedCerts.Count < 3)
         {
             AddCerts(addedCerts, userCertifications);
