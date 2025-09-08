@@ -8,7 +8,7 @@ namespace JobHelperApi.Services;
 
 
 
-public class SkillFormatter
+public class SkillChooser
 {
 
     // private List<TechItem> techStack;
@@ -54,7 +54,7 @@ public class SkillFormatter
     // };
 
     //This will return all skills to the api ENTRY POINT
-    public Dictionary<string, List<string>> FormatSkills(List<TechItem> techStack)
+    public Dictionary<string, List<string>> ChooseSkills(List<TechItem> techStack)
     {
         List<ListingSkill> listingTechnologies = new List<ListingSkill>();
 

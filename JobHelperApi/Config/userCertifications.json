@@ -29,6 +29,12 @@
             "dateissued": "Jun 2025",
             "issuedby" : "Meta",
             "tags": ["JavaScript"]
+        },
+        {
+            "name": "Tailwind CSS",
+            "dateissued": "Feb 2025",
+            "issuedby" : "Meta",
+            "tags": ["Tailwind CSS"]
         }
     ]
 }

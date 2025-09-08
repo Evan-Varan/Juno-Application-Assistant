@@ -151,8 +151,8 @@ Always return JSON that matches this schema:
     };
 
     // CoverLetterCreator.WriteCoverLetter(package);
-    var skills = new SkillFormatter();
-    var ouputtedSkills = skills.FormatSkills(job.TechStack);
+    var skills = new SkillChooser();
+    var ouputtedSkills = skills.ChooseSkills(job.TechStack);
     foreach (var entry in ouputtedSkills)
     {
         Console.Write($"{entry.Key}: ");
@@ -163,9 +163,18 @@ Always return JSON that matches this schema:
         Console.WriteLine();
     }
     CertificationChooser cc = new CertificationChooser();
-    cc.SortByWeights(job.TechStack);
+    var certifications = cc.ChooseCertifications(job.TechStack);
 
+    Console.WriteLine();
+    Console.WriteLine("From Program CS");
+    foreach (var cert in certifications)
+    {
+        Console.WriteLine($"{cert.Name}, {cert.DateIssued} - Issued by {cert.IssuedBy}");
+    }
+    Console.WriteLine();
 
+    ResumeBuiler rb = new ResumeBuiler();
+    rb.WriteResume(ouputtedSkills, certifications, package);
     
     return Results.Ok(package);
 
