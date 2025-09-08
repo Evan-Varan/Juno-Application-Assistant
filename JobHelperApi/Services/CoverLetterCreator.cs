@@ -31,7 +31,6 @@ public class CoverLetterCreator
 
         doc.SaveAs(coverLetterDocxDirectory);
         ConvertDocxToPdf(coverLetterDocxDirectory, coverLetterPDFDirectory);
-        doc.ReplaceText("{{CoverLetterText}}", body);
     }
 
     public static void ConvertDocxToPdf(string inputPath, string outputPath)

@@ -176,6 +176,19 @@ Always return JSON that matches this schema:
     ResumeBuiler rb = new ResumeBuiler();
     rb.WriteResume(ouputtedSkills, certifications, package);
     
+
+    //Creates a new GET endpoint at /api/download
+    app.MapGet("/api/download", () =>
+    {
+        var filePath = "../ResumePDFs/Resume-Epic.pdf";
+        var contentType = "application/pdf";
+        var fileName = "Resume-Epic.pdf";
+
+        return Results.File(filePath, contentType, fileName);
+    });
+
+
+
     return Results.Ok(package);
 
 });
