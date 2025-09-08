@@ -53,7 +53,6 @@ public class CertificationChooser
                 }
             }
         }
-        // printCerts(addedCertifications);
     }
     public void CheckNumberOfCertification(List<Certification> addedCerts, Certifications userCertifications)
     {
@@ -72,7 +71,6 @@ public class CertificationChooser
     }
     public void AddCerts(List<Certification> addedCerts, Certifications userCertifications)
     {
-        Console.WriteLine("AddCert Hit");
         foreach (var cert in userCertifications.Certs)
         {
             if (!addedCerts.Contains(cert) && addedCerts.Count < 3)
@@ -80,24 +78,10 @@ public class CertificationChooser
                 addedCerts.Add(cert);
             }
         }
-        // printCerts(addedCerts);
 
     }
     public void SubtractCert(List<Certification> addedCerts)
     {
-        Console.WriteLine("SubtractCert Hit");
         addedCerts.RemoveAt(addedCerts.Count - 1);
-        // printCerts(addedCerts);
-    }
-    public void CertFormatter() { }
-
-    public void printCerts(List<Certification> certs)
-    {
-        Console.WriteLine();
-        foreach (var cert in certs)
-        {
-            Console.WriteLine($"{cert.Name}, {cert.DateIssued} - Issued by {cert.IssuedBy}");
-        }
-        Console.WriteLine();
     }
 }

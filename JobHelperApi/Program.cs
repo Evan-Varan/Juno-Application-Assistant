@@ -142,9 +142,6 @@ Always return JSON that matches this schema:
         return Results.UnprocessableEntity(new { error = "Model did not return valid JSON", rawCover });
     }
 
-
-
-
     var package = new JobApplicationPackage
     {
         ListingInfo = job!,
@@ -154,48 +151,43 @@ Always return JSON that matches this schema:
     // CoverLetterCreator.WriteCoverLetter(package);
     var skills = new SkillChooser();
     var ouputtedSkills = skills.ChooseSkills(job.TechStack);
-    foreach (var entry in ouputtedSkills)
-    {
-        Console.Write($"{entry.Key}: ");
-        foreach (var item in entry.Value)
-        {
-            Console.Write($"{item}, ");
-        }
-        Console.WriteLine();
-    }
+
     CertificationChooser cc = new CertificationChooser();
     var certifications = cc.ChooseCertifications(job.TechStack);
-
-    Console.WriteLine();
-    Console.WriteLine("From Program CS");
-    foreach (var cert in certifications)
-    {
-        Console.WriteLine($"{cert.Name}, {cert.DateIssued} - Issued by {cert.IssuedBy}");
-    }
-    Console.WriteLine();
 
     ResumeBuiler rb = new ResumeBuiler();
     rb.WriteResume(ouputtedSkills, certifications, package);
 
-
-    //Creates a new GET endpoint at /api/download
-
-
-
-
+    JobApplicationStore.LastPackage = package;
     return Results.Ok(package);
 
 });
 
-app.MapGet("/api/download", () =>
+//Creates a new GET endpoint at /api/downloadresume
+app.MapGet("/api/downloadresume", () =>
 {
-    var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "ResumePDFs", "Resume-Epic.pdf");
+    var jAPack = JobApplicationStore.LastPackage;
+    var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "ResumePDFs", $"Resume-{jAPack.ListingInfo.Company}.pdf");
     var contentType = "application/pdf";
-    var fileName = "Resume-Epic.pdf";
+    var fileName = $"Resume-{jAPack.ListingInfo.Company}.pdf";
 
     return Results.File(filePath, contentType, fileName);
 });
 
+//Creates a new GET endpoint at /api/downloadcoverletter
+app.MapGet("/api/downloadcoverletter", () =>
+{
+    var jAPack = JobApplicationStore.LastPackage;
+    var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "CoverLetterPDFs", $"CoverLetter-{jAPack.ListingInfo.Company}.pdf");
+    var contentType = "application/pdf";
+    var fileName = $"CoverLetter-{jAPack.ListingInfo.Company}.pdf";
+
+    return Results.File(filePath, contentType, fileName);
+});
 app.Run();
 
 
+public static class JobApplicationStore
+{
+    public static JobApplicationPackage? LastPackage { get; set; }
+}
