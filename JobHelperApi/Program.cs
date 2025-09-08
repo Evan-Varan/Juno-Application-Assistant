@@ -148,7 +148,8 @@ Always return JSON that matches this schema:
         CoverLetter = coverLetter!
     };
 
-    // CoverLetterCreator.WriteCoverLetter(package);
+    CoverLetterCreator.WriteCoverLetter(package);
+    
     var skills = new SkillChooser();
     var ouputtedSkills = skills.ChooseSkills(job.TechStack);
 
