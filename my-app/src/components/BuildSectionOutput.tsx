@@ -15,8 +15,8 @@ export default function BuildSectionOuput({showOutput, outputDescription,loading
         {showOutput && loading == false
         ? 
             <div className= "flex flex-row gap-4 ">
-                <OutputCard title = "Resume" contentText='Your Juno Created Resume'/>
-                <OutputCard title = "Cover Letter" contentText='Your Juno Created Cover Letter'/>
+                <OutputCard title = "Resume" contentText='Your Juno Created Resume' downloadType='resume'/>
+                <OutputCard title = "Cover Letter" contentText='Your Juno Created Cover Letter' downloadType='coverletter'/>
             </div> 
         : null
         }

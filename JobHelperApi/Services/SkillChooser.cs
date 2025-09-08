@@ -43,15 +43,6 @@ public class SkillChooser
     public record Inventory(
         [property: JsonPropertyName("claimed")] List<string> Claimed
     );
-    // private List<ListingSkill> listingTechnologies = new List<ListingSkill>();
-
-    // private Dictionary<string, List<ListingSkill>> groupedSections =
-    // new Dictionary<string, List<ListingSkill>>{
-    //     {"frontend", new List<ListingSkill>()},
-    //     {"backend", new List<ListingSkill>()},
-    //     {"databases", new List<ListingSkill>()},
-    //     {"tools-cloud", new List<ListingSkill>()}
-    // };
 
     //This will return all skills to the api ENTRY POINT
     public Dictionary<string, List<string>> ChooseSkills(List<TechItem> techStack)
@@ -65,26 +56,13 @@ public class SkillChooser
             {"databases", new List<ListingSkill>()},
             {"tools-cloud", new List<ListingSkill>()}
         };
-        // Console.WriteLine();
-        // Console.WriteLine($"Normalizer Outputted:\n----------------");
+
         Normalizer(techStack, listingTechnologies);
-        // Console.WriteLine();
-        // Console.WriteLine($"Check Alias Outputted:\n----------------");
         CheckAliases(listingTechnologies);
-        // Console.WriteLine();
-        // Console.WriteLine($"Honesty Gate Outputted:\n----------------");
         HonestyGate(listingTechnologies);
-        // Console.WriteLine();
-        // Console.WriteLine($"Catalog Reserver Outputted:\n----------------");
         CatalogReserver(listingTechnologies, groupedSections);
-        // Console.WriteLine();
-        // Console.WriteLine($"Ranker Outputted:\n----------------");
         Ranker(groupedSections);
-        // Console.WriteLine();
-        // Console.WriteLine($"InventoryAdder Outputted:\n----------------");
         InventoryAdder(groupedSections);
-        // Console.WriteLine();
-        // Console.WriteLine($"Outputter Outputted:\n----------------");
         
         return Outputter(groupedSections);
     }
@@ -95,13 +73,9 @@ public class SkillChooser
         Normalizer(techStack, listingTechnologies);
         CheckAliases(listingTechnologies);
         HonestyGate(listingTechnologies);
-
         CatalogReserverList(listingTechnologies);
-
         RankerList(listingTechnologies);
-        Console.WriteLine();
-        Console.WriteLine($"CreateWeightedList Outputted:\n----------------");
-        printList(listingTechnologies);
+
         return listingTechnologies;
     }
     
@@ -113,12 +87,6 @@ public class SkillChooser
             var listingSkill = new ListingSkill(name, tech.Weight);
             listingTechnologies.Add(listingSkill);
         }
-
-        listingTechnologies.Add(new ListingSkill("next", 4));
-        listingTechnologies.Add(new ListingSkill("java se", 7));
-        listingTechnologies.Add(new ListingSkill("tailwind", 10));
-        listingTechnologies.Add(new ListingSkill("jenkins", 1));
-        // printList(listingTechnologies);
     }
     private void CheckAliases(List<ListingSkill> listingTechnologies)
     {
@@ -134,7 +102,6 @@ public class SkillChooser
                 }
             }
         }
-        // printList(listingTechnologies);
     }
     private void HonestyGate(List<ListingSkill> listingTechnologies)
     {
@@ -148,7 +115,6 @@ public class SkillChooser
                 listingTechnologies.RemoveAt(i);
             }
         }
-        // printList(listingTechnologies);
     }
     private void CatalogReserver(List<ListingSkill> listingTechnologies, Dictionary<string, List<ListingSkill>> groupedSections)
     {
@@ -169,11 +135,6 @@ public class SkillChooser
                 }
             }
         }
-        // printList(listingTechnologies);
-        // Console.WriteLine();
-        // Console.WriteLine($"Grouper Outputted:\n----------------");
-        // printDict(groupedSections);
-
     }
 
     private void CatalogReserverList(List<ListingSkill> listingTechnologies)
@@ -206,7 +167,6 @@ public class SkillChooser
         {
             BubbleSort(section.Value);
         }
-        // printDict(groupedSections);
     }
 
     private void RankerList(List<ListingSkill> listingTechnologies)
@@ -231,7 +191,6 @@ public class SkillChooser
                 }
             }
         }
-        // printDict(groupedSections);
     }
     private Dictionary<string, List<string>> Outputter(Dictionary<string, List<ListingSkill>> groupedSections)
     {
@@ -245,7 +204,6 @@ public class SkillChooser
                 dict[section.Key].Add(value.Name);
             }
         }
-        // printStringDict(dict);
         return dict;
     }
     private void BubbleSort(List<ListingSkill> skills)
@@ -266,35 +224,5 @@ public class SkillChooser
         var temp = skills[indexA];
         skills[indexA] = skills[indexB];
         skills[indexB] = temp;
-    }
-    private void printList(List<ListingSkill> list)
-    {
-        foreach (var listingSkill in list)
-        {
-            Console.Write($"[{listingSkill.Name}, {listingSkill.Weight}], ");
-        }
-        Console.WriteLine();
-    }
-    // private void printDict(Dictionary<string, List<ListingSkill>> dict) {
-    //     foreach (var entry in dict)
-    //     {
-    //         Console.Write($"{entry.Key}: ");
-    //         foreach (var item in entry.Value)
-    //         {
-    //             Console.Write($"[{item.Name}, {item.Weight}], ");
-    //         }
-    //         Console.WriteLine();
-    //     }
-    // }
-    private void printStringDict(Dictionary<string, List<string>> dict) {
-        foreach (var entry in dict)
-        {
-            Console.Write($"{entry.Key}: ");
-            foreach (var item in entry.Value)
-            {
-                Console.Write($"{item}, ");
-            }
-            Console.WriteLine();
-        }
     }
 }
