@@ -7,6 +7,7 @@ using JobHelperApi.Services;
 
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Register OpenAI client
@@ -147,7 +148,7 @@ Always return JSON that matches this schema:
     var package = new JobApplicationPackage
     {
         ListingInfo = job!,
-        CoverLetter = coverLetter! 
+        CoverLetter = coverLetter!
     };
 
     // CoverLetterCreator.WriteCoverLetter(package);
@@ -175,23 +176,26 @@ Always return JSON that matches this schema:
 
     ResumeBuiler rb = new ResumeBuiler();
     rb.WriteResume(ouputtedSkills, certifications, package);
-    
+
 
     //Creates a new GET endpoint at /api/download
-    app.MapGet("/api/download", () =>
-    {
-        var filePath = "../ResumePDFs/Resume-Epic.pdf";
-        var contentType = "application/pdf";
-        var fileName = "Resume-Epic.pdf";
 
-        return Results.File(filePath, contentType, fileName);
-    });
 
 
 
     return Results.Ok(package);
 
 });
+
+app.MapGet("/api/download", () =>
+{
+    var filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "ResumePDFs", "Resume-Epic.pdf");
+    var contentType = "application/pdf";
+    var fileName = "Resume-Epic.pdf";
+
+    return Results.File(filePath, contentType, fileName);
+});
+
 app.Run();
 
 

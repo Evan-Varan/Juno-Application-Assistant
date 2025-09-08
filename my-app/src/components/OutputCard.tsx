@@ -8,7 +8,7 @@ type cardProps = {
 }
 export default function OutputCard({title, contentText} : cardProps) {
     function handleDownload() : void{
-        alert("Clicked Download")
+        window.open("http://localhost:5005/api/download", "_blank");
     }
     return (
         <div className = "flex flex-row rounded-2xl border-solid border-white/10 border-2  bg-gray-900 w-80 h-40">
