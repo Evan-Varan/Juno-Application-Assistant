@@ -75,7 +75,7 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
     }
 
     return(
-    <div className ="flex flex-col gap-4 w-125">
+    <div className ="flex flex-col gap-4 w-1/2">
         <SectionHeading subheadingText = "CREATE WITH JUNO" headingText ="BUILD" pageText ="Create your dream job application with Juno."/> 
         <div className ="flex flex-col gap-4 justify-between h-full">
             <div className = "flex flex-row gap-4 ">

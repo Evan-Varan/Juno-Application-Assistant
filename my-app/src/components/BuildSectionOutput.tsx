@@ -1,3 +1,4 @@
+import LoadingSpinner from './LoadingSpinner';
 import OutputCard from './OutputCard'
 import SectionHeading from './SectionHeading'
 import { FiLoader } from "react-icons/fi";
@@ -10,7 +11,7 @@ type buildOutputProps = {
 
 export default function BuildSectionOuput({showOutput, outputDescription,loading }: buildOutputProps){
     return(
-     <div className ="flex flex-col gap-4 w-150">
+     <div className ="flex flex-col gap-4 w-1/2">
         <SectionHeading subheadingText = "VIEW WITH JUNO" headingText ="OUTPUT" pageText ={outputDescription}/> 
         {showOutput && loading == false
         ? 
@@ -23,8 +24,8 @@ export default function BuildSectionOuput({showOutput, outputDescription,loading
         {loading && showOutput == false 
         ?
             <div className ="flex flex-col items-center gap-4">
-                <h1 className="text-4xl flex font-bold text-left text-white">Juno is working on your request...</h1>
-                <FiLoader className='w-15 h-15 text-white'/>
+                <h1 className="text-4xl flex font-bold text-left text-white">Juno is building your request...</h1>
+                <LoadingSpinner/>
             </div>
         : null
         }   

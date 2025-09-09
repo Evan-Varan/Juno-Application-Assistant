@@ -1,6 +1,6 @@
 import Testimonial from './Testimonial'
 import SectionHeading from './SectionHeading'
-
+import { Section } from './Section'
 
 const testimonials = [
   {
@@ -36,7 +36,7 @@ const testimonials = [
 
 export default function Testimonials(){
     return(
-        <div className = "flex flex-col items-center gap-4">
+        <Section className = "flex flex-col items-center gap-4">
           <SectionHeading subheadingText = "TESTIMONIALS" headingText ="WHAT REAL DEVELOPERS SAY" pageText =""/> 
 
           {/* <h1 className="text-3xl flex text-white font-bold">WHAT REAL DEVELOPERS SAY</h1>  Maybe change size of heading text?*/}
@@ -52,6 +52,6 @@ export default function Testimonials(){
                   />
               ))}
           </div>
-        </div>
+        </Section>
     )
 }

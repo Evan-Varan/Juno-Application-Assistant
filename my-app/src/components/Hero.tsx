@@ -1,6 +1,9 @@
 import MotionButton from "./MotionButton"
 import Juno from "../assets/Juno.png"
 import {motion} from "framer-motion"
+import {Section} from "./Section"
+
+
 type heroProps = {
     buildRef: React.RefObject<HTMLDivElement | null>
     aboutRef: React.RefObject<HTMLDivElement | null>
@@ -8,7 +11,7 @@ type heroProps = {
 
 export default function Hero({buildRef,aboutRef} : heroProps){
     return(
-        <div className ="flex flex-row justify-between items-center w-300 h-200">
+        <Section className ="flex flex-row justify-between items-center h-screen">
             <div className= "flex flex-col justify-between w-200 gap-4">
                 <motion.h1
                     initial={{ opacity: 0, y: 40 }}
@@ -44,6 +47,6 @@ export default function Hero({buildRef,aboutRef} : heroProps){
                 className="w-75 h-75"
                 /> 
             </div>
-        </div>
+        </Section>
     )
 }
