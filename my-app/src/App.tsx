@@ -1,6 +1,8 @@
 import { useState, useRef} from 'react'
 import './App.css'
 
+import {motion} from "framer-motion"
+
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Testimonials from './components/Tesimonials'
@@ -9,6 +11,7 @@ import Build from "./components/Build"
 import FAQ from "./components/FAQ"
 import Footer from "./components/Footer"
 import Contact from "./components/Contact"
+import { Section } from './components/Section'
 
 // function verifyURL(search: string) : boolean{
 //   const regexPattern = /^(https?:\/\/)([\w-]+(\.[\w-]+)+)(:[0-9]+)?(\/\S*)?$/i
@@ -54,21 +57,36 @@ export default function App() {
       <Navbar buildRef = {buildRef} aboutRef = {aboutRef} faqRef = {faqRef} contactRef = {contactRef}/>
       </div>
       <div className=" relative flex gap-16 items-center justify-center flex-col min-h-screen">
-      <Hero buildRef={buildRef} aboutRef={aboutRef}/>
+         <Section>
+            <Hero buildRef={buildRef} aboutRef={aboutRef}/>
+         </Section>
       <div ref ={buildRef}>
-        <Build/>
+        <Section>
+          <Build />
+        </Section>
       </div>
       <div ref ={aboutRef}>
-        <About />
-        <Testimonials />
+        <Section>
+          <About />
+        </Section>
+        <Section>
+          <Testimonials />
+        </Section>
       </div>
       <div ref ={faqRef}>
-        <FAQ />
+        <Section>
+          <FAQ />
+        </Section>
       </div>
       <div ref ={contactRef}>
-        <Contact />
+        <Section>
+          <Contact />
+        </Section>
       </div>
-      <Footer />
+      <Section>
+        <Footer />
+      </Section>
+      
       
       {/* <div className="flex flex-col gap-20 items-center">
         <div className = "flex flex-row gap-4 items-center justify-center">

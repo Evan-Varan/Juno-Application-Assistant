@@ -1,6 +1,6 @@
-import Button from "./Button"
+import MotionButton from "./MotionButton"
 import Juno from "../assets/Juno.png"
-
+import {motion} from "framer-motion"
 type heroProps = {
     buildRef: React.RefObject<HTMLDivElement | null>
     aboutRef: React.RefObject<HTMLDivElement | null>
@@ -10,13 +10,32 @@ export default function Hero({buildRef,aboutRef} : heroProps){
     return(
         <div className ="flex flex-row justify-between items-center w-300 h-200">
             <div className= "flex flex-col justify-between w-200 gap-4">
-                <h1 className = "text-7xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">JUNO AI</h1>
-                <div className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-sky-400"></div>
-                <h1 className="text-4xl flex font-bold text-white ">Get the Application Assisstance You Need.</h1>
-                <p className="text-xl flex font-semibold text-gray-300 "> The first ever generative AI for software developer job applications.</p>
+                <motion.h1
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }} 
+                    className = "text-7xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">JUNO AI
+                </motion.h1>
+                <motion.div 
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }} 
+                    className="w-16 h-1 bg-gradient-to-r from-indigo-400 to-sky-400"></motion.div>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8,}} 
+                        className="text-4xl flex font-bold text-white ">Get the Application Assisstance You Need.
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}  
+                        className="text-xl flex font-semibold text-gray-300 "> The first ever generative AI for software developer job applications.
+                    </motion.p>
                 <div className= "gap-4 flex">
-                    <Button text ="Try Now" onClick = {() => buildRef.current?.scrollIntoView({behavior: "smooth"})}/>
-                    <Button variant="secondary" onClick = {() => aboutRef.current?.scrollIntoView({behavior: "smooth"})} text="Learn More"/>
+                    <MotionButton text ="Try Now" onClick = {() => buildRef.current?.scrollIntoView({behavior: "smooth"})}/>
+                    <MotionButton variant="secondary" onClick = {() => aboutRef.current?.scrollIntoView({behavior: "smooth"})} text="Learn More"/>
                 </div>
             </div>
             <div className= "flex flex-col justify-between w-75">
