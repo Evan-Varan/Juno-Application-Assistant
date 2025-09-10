@@ -1,5 +1,5 @@
 import MotionButton from "./MotionButton"
-import Juno from "../assets/Juno.png"
+import Juno2 from "../assets/Juno2.png"
 import {motion} from "framer-motion"
 import {Section} from "./Section"
 
@@ -43,7 +43,7 @@ export default function Hero({buildRef,aboutRef} : heroProps){
             </div>
             <div className= "flex flex-col justify-between w-75">
                 <img 
-                src={Juno} 
+                src={Juno2} 
                 className="w-75 h-75"
                 /> 
             </div>

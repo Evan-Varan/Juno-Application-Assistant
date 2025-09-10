@@ -9,11 +9,11 @@ using System.Diagnostics;
 namespace JobHelperApi.Services;
 public class ResumeBuiler
 {
-    public void WriteResume(Dictionary<string, List<string>> skills, List<Certification> certifications, JobApplicationPackage jAPack)
+    public DocX WriteResume(Dictionary<string, List<string>> skills, List<Certification> certifications, string companyName)
     {
         var templatePath = "C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/ResumeJobHelperTemplate.docx";
-        var ResumeDocxDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/Resume-{jAPack.ListingInfo.Company}.docx";
-        var ResumePDFDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumePDFs/Resume-{jAPack.ListingInfo.Company}.pdf";
+        var ResumeDocxDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/Resume-{companyName}.docx";
+        var ResumePDFDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumePDFs/Resume-{companyName}.pdf";
 
         Directory.CreateDirectory(Path.GetDirectoryName(ResumeDocxDirectory)!);
         Directory.CreateDirectory(Path.GetDirectoryName(ResumePDFDirectory)!);
@@ -26,8 +26,9 @@ public class ResumeBuiler
         InsertCerts(certifications, doc);
 
         doc.SaveAs(ResumeDocxDirectory);
-        
+
         ConvertDocxToPdf(ResumeDocxDirectory, ResumePDFDirectory);
+        return doc;
     }
     private void InsertSkills(Dictionary<string, List<string>> skills, DocX templateDoc)
     {

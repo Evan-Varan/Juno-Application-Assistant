@@ -1,5 +1,5 @@
 import Button from "./Button";
-import JunoAIProfilePicture from "../assets/JunoAIProfilePicture.png"
+import Juno2 from "../assets/Juno2.png"
 import { FaGithub   } from "react-icons/fa";
 
 type navbarProps = {
@@ -13,11 +13,14 @@ type navbarProps = {
 export default function Navbar({buildRef,aboutRef,faqRef,contactRef} : navbarProps){
     return(
         <div className="flex flex-row items-center justify-between w-300 h-15 py-12">
-            <div className = "items-center flex ">
+            <div className = "items-center gap-4 flex ">
                 <img 
-                src={JunoAIProfilePicture} 
-                className="w-45 h-45"
+                src={Juno2} 
+                className="w-20 h-20"
                 /> 
+                <p
+                    className = "text-4xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">Juno
+                </p>
             </div>
             <div className= "flex text-white font-bold gap-10">
                 <button>Home</button>
