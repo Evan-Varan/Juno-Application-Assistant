@@ -42,11 +42,14 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
         try {
             
             setLoading(true)
+            const startTime : number = Date.now();
             const res = await fetch("http://localhost:5005/api/jobparser", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ jobText: search }),
             });
+            const endTime : number = Date.now();
+            const timeTaken : number = endTime - startTime
             const data : JobApplicationPackage = await res.json();
             console.log(data.listingInfo.company)
             console.log(data.listingInfo.description)
@@ -61,7 +64,7 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
             }
             setJobData(data);
             setShowOutput(true);
-            setOutputDescription("View your created documents below.")
+            setOutputDescription(`View your created documents below. Juno took ${(timeTaken / 1000).toFixed(2)} seconds.`)
         } catch (e) {
             console.error("request failed", e);
         }
@@ -84,7 +87,7 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
 
     function handleGenerateClick(){
         handleResetOutput()
-        setOutputDescription("Please wait for your request to be processed.")
+        setOutputDescription("Please wait for your request to be processed. This might take some time.")
         handleJobDescriptionInput();
     }
 
