@@ -1,4 +1,4 @@
-import JUNO from '../assets/JUNO.png'
+import Juno2 from '../assets/Juno2.png'
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import blueflower3 from '../assets/blueflower3.png'
 import blueflower2 from '../assets/blueflower2.png'
@@ -15,10 +15,10 @@ export default function Footer(){
             <div className ="flex flex-col items-center w-150 justify-center gap-4">
                 <div className ="justify-center">
                     <img 
-                    src={JUNO} 
+                    src={Juno2} 
                     className="w-25 h-25 flex"
                     />
-                    <p className="text-gray-300 text-center">Juno AI</p> 
+                    <p className="text-gray-300 text-2xl font-bold text-center">Juno AI</p> 
                 </div>
                 
                 <div className ="flex flex-row text-lg text-white font-semibold items-center gap-10">

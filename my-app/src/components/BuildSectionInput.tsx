@@ -12,6 +12,7 @@ type buildInputProps = {
     setShowOutput: (value: boolean) => void
     setOutputDescription: (value: string) => void
     setLoading: (value: boolean) => void
+    setError: (value: boolean) => void
 }
 type listingSkill = {
     name: string,
@@ -30,7 +31,7 @@ type JobApplicationPackage = {
   }
 }
 
-export default function BuildSectionInput({search, setSearch, setShowOutput, setOutputDescription, setLoading}: buildInputProps){
+export default function BuildSectionInput({search, setSearch, setShowOutput, setOutputDescription, setLoading, setError}: buildInputProps){
     const [jobData, setJobData] = useState<JobApplicationPackage | null>()
     const [inputPlaceholder, setInputPlaceholder] = useState<string>("Enter Job Description...")
     const [switchInputButtonText, setSwitchInputButtonText] = useState<string>("Switch to URL Input")
@@ -39,6 +40,7 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
     async function handleJobDescriptionInput() {
         console.log("calling /api/jobparser with", search);
         try {
+            
             setLoading(true)
             const res = await fetch("http://localhost:5005/api/jobparser", {
             method: "POST",
@@ -46,6 +48,17 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
             body: JSON.stringify({ jobText: search }),
             });
             const data : JobApplicationPackage = await res.json();
+            console.log(data.listingInfo.company)
+            console.log(data.listingInfo.description)
+            console.log(data.listingInfo.title)
+            data.listingInfo.techStack.forEach(tech => {
+                console.log(tech)
+            });
+            if(data.listingInfo.company.trim() == "" || data.listingInfo.title.trim() == "" || data.listingInfo.techStack.length == 0){
+                setError(true);
+                setLoading(false);
+                return;
+            }
             setJobData(data);
             setShowOutput(true);
             setOutputDescription("View your created documents below.")
@@ -65,6 +78,7 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
         setShowOutput(false);
         setSearch("")
         setJobData(null)
+        setError(false)
         setOutputDescription("Input a Job Description or URL to get started.")
     }
 
@@ -89,8 +103,8 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
                     <p className = "italic text-gray-300 text-left"><strong>Title:</strong> {jobData?.listingInfo.title}</p>
                     <p className = "italic text-gray-300 text-left"><strong>Company:</strong> {jobData?.listingInfo.company}</p>
                     <p className = "italic text-gray-300 text-left"><strong>Description:</strong> {jobData?.listingInfo.description}</p>
-                    <ul className = "italic text-gray-300 text-left"><strong>Tech Stack:</strong>
-                    {jobData?.listingInfo.techStack?.map((tech,key) => <li key={key}>{tech.name}</li>)}
+                    <ul className = "italic text-gray-300 text-left"><strong>Top Technologies Used:</strong>
+                    {jobData?.listingInfo.techStack?.slice(0,8).map((tech,key) => <li key={key}>{tech.name}</li>)}
                     </ul>
                 </div> : null
             }

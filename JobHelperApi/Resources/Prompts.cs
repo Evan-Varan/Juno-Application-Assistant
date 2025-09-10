@@ -62,14 +62,10 @@ namespace JobHelperApi.Resources
             {
             ""Title"": string,
             ""Company"": string,
-            ""Location"": string,
-            ""EmploymentType"": string,
+            ""Description"": string,
             ""TechStack"": [
                 { ""Name"": string, ""Weight"": number }
             ],
-            ""Skills"": [ string ],
-            ""Responsibilities"": [ string ],
-            ""Requirements"": [ string ]
             }
             ";
         public const string parseUserPrompt = "Job description:\n";

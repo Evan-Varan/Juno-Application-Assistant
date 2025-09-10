@@ -1,12 +1,12 @@
-import JunoCharacter from '../assets/JunoCharacter.png'
 import {motion} from "framer-motion"
 
 type junoProps = {
-    junoHeader: string
-    junoSubHeader: string
+    junoHeader: string,
+    junoSubHeader: string,
+    junoImage: string
 }
 
-export default function Juno({junoHeader, junoSubHeader} : junoProps){
+export default function Juno({junoHeader, junoSubHeader, junoImage} : junoProps){
     return(
         <motion.section
       initial={{ opacity: 0, y: 50 }}
@@ -14,7 +14,7 @@ export default function Juno({junoHeader, junoSubHeader} : junoProps){
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.8, ease: "easeOut" }} className= "scale-80 absolute top-[-52%] right-[50%] z-0">
             <img 
-                src={JunoCharacter} 
+                src={junoImage} 
                 className="w-full h-[60vh] object-contain"
                 />
             <div className="absolute top-[15%] right-[-110%] mx-auto w-full z-0 text-white border-white border-2 rounded-4xl py-6 px-6">

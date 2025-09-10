@@ -11,7 +11,7 @@ public class ResumeBuiler
 {
     public DocX WriteResume(Dictionary<string, List<string>> skills, List<Certification> certifications, string companyName)
     {
-        var templatePath = "C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/ResumeJobHelperTemplate.docx";
+        var templatePath = "C:/Users/Brick/Documents/GitHub/JobHelper-Application/TemplateDocs/ResumeJobHelperTemplate.docx";
         var ResumeDocxDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumeDocs/Resume-{companyName}.docx";
         var ResumePDFDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/ResumePDFs/Resume-{companyName}.pdf";
 

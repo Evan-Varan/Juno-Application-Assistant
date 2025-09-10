@@ -12,7 +12,7 @@ public class CoverLetterCreator
 {
     public static void WriteCoverLetter(JobApplicationPackage package)
     {
-        var templateDoc = "C:/Users/Brick/Documents/GitHub/JobHelper-Application/CoverLetterDocs/CoverLetterJobHelperTemplate.docx";
+        var templateDoc = "C:/Users/Brick/Documents/GitHub/JobHelper-Application/TemplateDocs/CoverLetterJobHelperTemplate.docx";
         var coverLetterDocxDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/CoverLetterDocs/CoverLetter-{package.ListingInfo.Company}.docx";
         var coverLetterPDFDirectory = $"C:/Users/Brick/Documents/GitHub/JobHelper-Application/CoverLetterPDFs/CoverLetter-{package.ListingInfo.Company}.pdf";
 
