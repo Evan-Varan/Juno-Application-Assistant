@@ -8,6 +8,7 @@ import JunoThinking from '../assets/JunoThinking.png';
 import JunoFound from '../assets/JunoFound.png';
 import JunoSad from '../assets/JunoSad.png';
 
+
 export default function Build(){
     const [search, setSearch] = useState<string>("");
     const [showOutput, setShowOutput] = useState<boolean>(false)
@@ -21,7 +22,7 @@ export default function Build(){
         if (loading && !showOutput)
             return <Juno junoHeader="I got your request!" junoSubHeader="Give me one moment..." junoImage = {JunoThinking} loading />
         if (showOutput && !loading)
-            return <Juno junoHeader="Here’s what I found" junoSubHeader="Your documents are below." junoImage = {JunoFound} />
+            return <Juno junoHeader="Here’s what I found." junoSubHeader="Your documents are below." junoImage = {JunoFound} />
         if (!showOutput && !loading)
             return <Juno junoHeader="Hey, I’m Juno!" junoSubHeader="Let’s get started on your application." junoImage = {JunoHello}/>
         return null
@@ -30,7 +31,7 @@ export default function Build(){
         <Section className='relative flex flex-col min-h-[60vh]'>
             {renderJuno()}
             <Section className = "bg-items-center z-1 text-center border-2 gap-8 border-white/10 rounded-3xl bg-black">
-                <BuildSectionInput search = {search} setSearch={setSearch} setShowOutput ={setShowOutput} setOutputDescription = {setOutputDescription} setLoading ={setLoading} setError ={setError}/>
+                <BuildSectionInput search = {search} setSearch={setSearch} setShowOutput ={setShowOutput} setOutputDescription = {setOutputDescription} setLoading ={setLoading} setError ={setError} loading = {loading}/>
                 <BuildSectionOutput showOutput = {showOutput} outputDescription= {outputDescription} loading = {loading}/>
             </Section>      
         </Section>

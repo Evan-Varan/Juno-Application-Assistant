@@ -83,6 +83,8 @@ public class ResumeBuiler
         doc.RemoveParagraphAt(anchorIndex + certifications.Count);
     }
 
+    private void ChooseProjects(){}
+    private void ChooseExperience(){}
     public static void ConvertDocxToPdf(string inputPath, string outputPath)
     {
         var psi = new ProcessStartInfo
@@ -94,7 +96,7 @@ public class ResumeBuiler
             UseShellExecute = false,
             CreateNoWindow = true
         };
-        
+
         using var process = Process.Start(psi);
         process.WaitForExit();
     }

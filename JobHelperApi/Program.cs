@@ -6,6 +6,8 @@ using System.Net.Http.Json;
 using JobHelperApi.Services;
 using JobHelperApi.Orchestror;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Register OpenAI client
@@ -33,6 +35,7 @@ builder.Services.AddScoped<JobParserService>();
 builder.Services.AddScoped<ResumeService>();
 builder.Services.AddScoped<CoverLetterService>();
 builder.Services.AddScoped<JobApplicationOrchestrator>();
+builder.Services.AddScoped<AnswerQuestions>();
 
 var app = builder.Build();
 app.UseCors();
@@ -68,10 +71,16 @@ app.MapGet("/api/downloadcoverletter", () =>
 
     return Results.File(filePath, contentType, fileName);
 });
+
+app.MapPost("/api/otherquestions", async (AnswerQuestions asked, UserQuestionInput userQuestion) =>
+{
+    var lastPackage = JobApplicationStore.LastPackage;
+
+    if (lastPackage == null)
+        return Results.BadRequest("No job package available yet.");
+
+    var result = await asked.Ask(lastPackage, userQuestion);
+    return Results.Ok(result);
+});
 app.Run();
 
-
-public static class JobApplicationStore
-{
-    public static JobApplicationPackage? LastPackage { get; set; }
-}

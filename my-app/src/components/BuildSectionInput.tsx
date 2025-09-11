@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { IoMdSwap  } from "react-icons/io";
 import { MdOutlineClear } from "react-icons/md";
 import { useRef } from 'react'
-import { GrPowerReset } from "react-icons/gr";
 import { FaStopCircle } from "react-icons/fa";
 
 
@@ -18,6 +17,7 @@ type buildInputProps = {
     setOutputDescription: (value: string) => void
     setLoading: (value: boolean) => void
     setError: (value: boolean) => void
+    loading: boolean
 }
 type listingSkill = {
     name: string,
@@ -36,7 +36,7 @@ type JobApplicationPackage = {
   }
 }
 
-export default function BuildSectionInput({search, setSearch, setShowOutput, setOutputDescription, setLoading, setError}: buildInputProps){
+export default function BuildSectionInput({search, setSearch, setShowOutput, setOutputDescription, setLoading, setError, loading}: buildInputProps){
     const [jobData, setJobData] = useState<JobApplicationPackage | null>()
     const [inputPlaceholder, setInputPlaceholder] = useState<string>("Enter Job Description...")
     const [switchInputButtonText, setSwitchInputButtonText] = useState<string>("Switch to URL Input")
@@ -140,7 +140,8 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
             <div className= "flex flex-row gap-4">
                 <Button text = {switchInputButtonText} Icon ={IoMdSwap} onClick = {switchInputType}/>
                 <Button variant= "secondary" text= "Clear" Icon ={MdOutlineClear} onClick = {handleResetOutput}/>
-                <Button variant= "tertiary" text= "Cancel" Icon ={FaStopCircle} onClick = {cancelUserRequest}/>
+                {loading ?
+                <Button variant= "tertiary" text= "Cancel" Icon ={FaStopCircle} onClick = {cancelUserRequest}/> : null}
             </div>       
         </div>
     </div>

@@ -1,6 +1,7 @@
 import LoadingSpinner from './LoadingSpinner';
 import OutputCard from './OutputCard'
 import SectionHeading from './SectionHeading'
+import OtherQuestions from './OtherQuestion';
 
 type buildOutputProps = {
     showOutput: boolean
@@ -14,20 +15,24 @@ export default function BuildSectionOuput({showOutput, outputDescription,loading
         <SectionHeading subheadingText = "VIEW WITH JUNO" headingText ="OUTPUT" pageText ={outputDescription}/> 
         {showOutput && loading == false
         ? 
-            <div className= "flex flex-row gap-4 ">
-                <OutputCard title = "Resume" contentText='Your Juno Created Resume' downloadType='resume'/>
-                <OutputCard title = "Cover Letter" contentText='Your Juno Created Cover Letter' downloadType='coverletter'/>
-            </div> 
+            <div className ="flex flex-col gap-16">
+                <div className= "flex flex-row gap-4 ">
+                    <OutputCard title = "Resume" contentText='Your Juno Created Resume' downloadType='resume'/>
+                    <OutputCard title = "Cover Letter" contentText='Your Juno Created Cover Letter' downloadType='coverletter'/>
+                </div>
+                <OtherQuestions/>
+            </div>
         : null
         }
         {loading && showOutput == false 
         ?
-            <div className ="flex flex-col items-center gap-4">
+            <div className ="flex flex-col items-center justify-center gap-4">
                 <h1 className="text-4xl flex font-bold text-left text-white">Juno is building your request...</h1>
                 <LoadingSpinner/>
             </div>
         : null
-        }   
+        }
+           
     </div>
     )
 }

@@ -25,6 +25,7 @@ public class JobApplicationOrchestrator
         var package = new JobApplicationPackage
         {
             ListingInfo = parsedResults!,
+            Resume = resumeResult!,
             CoverLetter = coverLetterResult!
         };
         CoverLetterCreator.WriteCoverLetter(package);

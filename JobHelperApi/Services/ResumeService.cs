@@ -5,7 +5,7 @@ namespace JobHelperApi.Services;
 
 public class ResumeService
 {
-    public DocX BuildResume(JobParseResult job)
+    public string BuildResume(JobParseResult job)
     {
         var skills = new SkillChooser();
         var ouputtedSkills = skills.ChooseSkills(job.TechStack);
@@ -15,6 +15,6 @@ public class ResumeService
 
         ResumeBuiler rb = new ResumeBuiler();
         var resumeDocx = rb.WriteResume(ouputtedSkills, certifications, job.Company);
-        return resumeDocx;
+        return resumeDocx.Text;
     }
 }

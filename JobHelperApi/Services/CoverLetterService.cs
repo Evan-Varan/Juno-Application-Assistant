@@ -17,7 +17,7 @@ public class CoverLetterService
     {
         client = oAIC;
     }
-    public async Task<CoverLetterResult> CoverLetterTextAsync(JobParseResult jobParseResult, DocX resumeDoc)
+    public async Task<CoverLetterResult> CoverLetterTextAsync(JobParseResult jobParseResult, string resumeText)
     {
         var system = Prompts.coverLetterSystemPrompt;
 
@@ -28,7 +28,7 @@ public class CoverLetterService
         $"Description:\n{jobParseResult.Description}\n" +
         $"Tech Stack: {string.Join(", ", jobParseResult.TechStack.Select(t => t.Name))}\n" +
         "And here is the tailored resume for the job listing:\n" +
-        resumeDoc.Text;
+        resumeText;
 
 
         //ChatGPT Request
