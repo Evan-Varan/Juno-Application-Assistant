@@ -1,16 +1,27 @@
 import Button from "./Button";
 import Juno2 from "../assets/Juno2.png"
 import { FaGithub   } from "react-icons/fa";
+import { useState } from "react";
 
 type navbarProps = {
     buildRef: React.RefObject<HTMLDivElement | null>,
     aboutRef: React.RefObject<HTMLDivElement| null>,
     faqRef: React.RefObject<HTMLDivElement | null>,
     contactRef: React.RefObject<HTMLDivElement | null>,
+    setLogin: (value: boolean) => void,
+    setSignup: (value: boolean) => void
 }
 
 
-export default function Navbar({buildRef,aboutRef,faqRef,contactRef} : navbarProps){
+export default function Navbar({buildRef,aboutRef,faqRef,contactRef, setLogin, setSignup} : navbarProps){
+
+    function enableLogin(){
+        setLogin(true)
+    }
+    function enableSingup(){
+        setSignup(true)
+    }
+    
     return(
         <div className="flex flex-row items-center justify-between w-300 h-15 py-12">
             <div className = "items-center gap-4 flex ">
@@ -32,8 +43,8 @@ export default function Navbar({buildRef,aboutRef,faqRef,contactRef} : navbarPro
                     <FaGithub className="w-10 h-10 text-white hover:text-gray-400" />
                 </a>
                 <div className= "gap-4 flex">
-                    <Button text ="Login"/>
-                    <Button variant="secondary" text="Signup"/>
+                    <Button text ="Login" onClick={enableLogin}/>
+                    <Button text = "Signup" variant="secondary" onClick={enableSingup}/>
                 </div>
             </div>
         </div>

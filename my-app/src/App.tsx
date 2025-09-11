@@ -1,4 +1,4 @@
-import { useRef} from 'react'
+import { useState, useRef} from 'react'
 import './App.css'
 
 import Hero from './components/Hero'
@@ -9,6 +9,7 @@ import Build from "./components/Build"
 import FAQ from "./components/FAQ"
 import Footer from "./components/Footer"
 import Contact from "./components/Contact"
+import SignupModal from './components/SignupModal'
 
 export default function App() {
 
@@ -16,11 +17,13 @@ export default function App() {
   const aboutRef = useRef<HTMLDivElement>(null)
   const faqRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
+  const [login, setLogin] = useState<boolean>(false)
+  const [signup, setSignup] = useState<boolean>(false)
 
   return (
     <div className =" flex flex-col justify-center items-center border-dashed bg-gradient-to-b from-black to-gray-900">
       <div className="flex justify-center">
-        <Navbar buildRef = {buildRef} aboutRef = {aboutRef} faqRef = {faqRef} contactRef = {contactRef}/>
+        <Navbar buildRef = {buildRef} aboutRef = {aboutRef} faqRef = {faqRef} contactRef = {contactRef} setLogin = {setLogin} setSignup = {setSignup}/>
       </div>
       <div className=" relative flex gap-24 items-center justify-center flex-col min-h-screen">
         <Hero buildRef={buildRef} aboutRef={aboutRef}/>
@@ -39,6 +42,9 @@ export default function App() {
         </div>
           <Footer buildRef = {buildRef} aboutRef = {aboutRef} faqRef = {faqRef} contactRef = {contactRef} />
         </div>
+        {/* Modals */}
+      {signup && <SignupModal onClose={() => setSignup(false)} />}
+      {/* {login && <LoginModal onClose={() => setLogin(false)} />} */}
     </div>
   );
 }
