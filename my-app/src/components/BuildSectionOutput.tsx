@@ -1,7 +1,6 @@
 import LoadingSpinner from './LoadingSpinner';
 import OutputCard from './OutputCard'
 import SectionHeading from './SectionHeading'
-import { FiLoader } from "react-icons/fi";
 
 type buildOutputProps = {
     showOutput: boolean

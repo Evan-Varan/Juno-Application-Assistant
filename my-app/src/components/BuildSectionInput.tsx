@@ -5,6 +5,11 @@ import SectionHeading from './SectionHeading'
 import { useState } from 'react'
 import { IoMdSwap  } from "react-icons/io";
 import { MdOutlineClear } from "react-icons/md";
+import { useRef } from 'react'
+import { GrPowerReset } from "react-icons/gr";
+import { FaStopCircle } from "react-icons/fa";
+
+
 
 type buildInputProps = {
     search: string
@@ -36,39 +41,60 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
     const [inputPlaceholder, setInputPlaceholder] = useState<string>("Enter Job Description...")
     const [switchInputButtonText, setSwitchInputButtonText] = useState<string>("Switch to URL Input")
     
+    let abortController = useRef<(AbortController | null)>(null) //Global reference to abortcontroller
 
     async function handleJobDescriptionInput() {
+        abortController.current = new AbortController(); //We have to create a new instance of abort controller each time we use it as it destroys itself when aborted
         console.log("calling /api/jobparser with", search);
         try {
-            
             setLoading(true)
             const startTime : number = Date.now();
             const res = await fetch("http://localhost:5005/api/jobparser", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ jobText: search }),
+            signal: abortController.current.signal //Abort signal 
             });
             const endTime : number = Date.now();
             const timeTaken : number = endTime - startTime
             const data : JobApplicationPackage = await res.json();
+
             console.log(data.listingInfo.company)
             console.log(data.listingInfo.description)
             console.log(data.listingInfo.title)
+
             data.listingInfo.techStack.forEach(tech => {
                 console.log(tech)
             });
+
             if(data.listingInfo.company.trim() == "" || data.listingInfo.title.trim() == "" || data.listingInfo.techStack.length == 0){
                 setError(true);
                 setLoading(false);
                 return;
             }
+
             setJobData(data);
             setShowOutput(true);
             setOutputDescription(`View your created documents below. Juno took ${(timeTaken / 1000).toFixed(2)} seconds.`)
-        } catch (e) {
-            console.error("request failed", e);
+
+        } catch (e:any) {
+            if(e.name === "AbortError"){ //called when abortController.abort() is run
+                console.log("user canceled request")
+            }else{
+                setError(true) //Cant connect to API Error
+                setOutputDescription("Input a Job Description or URL to get started.")
+                console.error("request failed", e);
+            }
+            
         }
         setLoading(false)
+    }
+
+    function cancelUserRequest(){
+        if(abortController.current){
+            abortController.current.abort();
+            abortController.current = null; //set controller to null as its been aborted
+        }
     }
 
     function switchInputType(){
@@ -114,6 +140,7 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
             <div className= "flex flex-row gap-4">
                 <Button text = {switchInputButtonText} Icon ={IoMdSwap} onClick = {switchInputType}/>
                 <Button variant= "secondary" text= "Clear" Icon ={MdOutlineClear} onClick = {handleResetOutput}/>
+                <Button variant= "tertiary" text= "Cancel" Icon ={FaStopCircle} onClick = {cancelUserRequest}/>
             </div>       
         </div>
     </div>

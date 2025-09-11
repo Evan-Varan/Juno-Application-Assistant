@@ -9,8 +9,6 @@ import Build from "./components/Build"
 import FAQ from "./components/FAQ"
 import Footer from "./components/Footer"
 import Contact from "./components/Contact"
-import Juno from './components/Juno'
-import JunoHello from './assets/JunoHello.png';
 
 export default function App() {
 

@@ -2,11 +2,13 @@ import {ArrowDownTrayIcon} from '@heroicons/react/24/solid'
 import Button from './Button'
 import pdfblue from '../assets/pdfblue.png'
 import pdfgrey from '../assets/pdfgrey.png'
+
 type cardProps = {
     title : string,
     contentText: string
     downloadType: string
 }
+
 export default function OutputCard({title, contentText, downloadType} : cardProps) {
     function handleDownload() : void{
         window.open(`http://localhost:5005/api/download${downloadType}`, "_blank");

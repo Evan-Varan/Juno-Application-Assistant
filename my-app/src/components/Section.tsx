@@ -5,7 +5,6 @@ type sectionProps = {
   className?: string,
 }
 
-
 export function Section({ children, className }: sectionProps) {
   return (
     <motion.section

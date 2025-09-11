@@ -6,7 +6,6 @@ type testimonialProps = {
     role: string,
 }
 
-
 export default function Testimonial({contentText, userName, profilePicture, role} : testimonialProps){
     return(
         <div className = "bg-gray-900 w-60 h-70 px-2 py-4 text-center border-white/10 border-2 relative rounded-2xl flex flex-col text-base items-center">

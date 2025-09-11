@@ -8,10 +8,6 @@ import JunoThinking from '../assets/JunoThinking.png';
 import JunoFound from '../assets/JunoFound.png';
 import JunoSad from '../assets/JunoSad.png';
 
-
-//TODO: useState -> useMemo, switch input logic and UI, break build components up into buildinput and buildoutput
-
-
 export default function Build(){
     const [search, setSearch] = useState<string>("");
     const [showOutput, setShowOutput] = useState<boolean>(false)
