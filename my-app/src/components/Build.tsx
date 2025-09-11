@@ -23,7 +23,7 @@ export default function Build(){
         if(error)
             return <Juno junoHeader="I'm Sorry!" junoSubHeader="I couldn't find anything for that description." junoImage = {JunoSad}/>
         if (loading && !showOutput)
-            return <Juno junoHeader="I got your request!" junoSubHeader="Give me one moment..." junoImage = {JunoThinking} />
+            return <Juno junoHeader="I got your request!" junoSubHeader="Give me one moment..." junoImage = {JunoThinking} loading />
         if (showOutput && !loading)
             return <Juno junoHeader="Here’s what I found" junoSubHeader="Your documents are below." junoImage = {JunoFound} />
         if (!showOutput && !loading)

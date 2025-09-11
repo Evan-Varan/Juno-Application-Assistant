@@ -3,7 +3,15 @@ import { FaGithub, FaLinkedin } from "react-icons/fa"
 import blueflower3 from '../assets/blueflower3.png'
 import blueflower2 from '../assets/blueflower2.png'
 
-export default function Footer(){
+
+type footerProps = {
+    buildRef: React.RefObject<HTMLDivElement | null>,
+    aboutRef: React.RefObject<HTMLDivElement| null>,
+    faqRef: React.RefObject<HTMLDivElement | null>,
+    contactRef: React.RefObject<HTMLDivElement | null>,
+}
+
+export default function Footer({buildRef,aboutRef,faqRef,contactRef} : footerProps){
     return(
         <div className ="flex justify-between w-450 h-100">
             <div className= "flex w-100">
@@ -22,10 +30,10 @@ export default function Footer(){
                 </div>
                 
                 <div className ="flex flex-row text-lg text-white font-semibold items-center gap-10">
-                    <button>Home</button>
-                    <button>Builder</button>
-                    <button>About</button>
-                    <button>FAQ</button>
+                    <button onClick = {() => buildRef.current?.scrollIntoView({behavior: "smooth"})}>Builder</button>
+                    <button onClick = {() => aboutRef.current?.scrollIntoView({behavior: "smooth"})}>About</button>
+                    <button onClick = {() => faqRef.current?.scrollIntoView({behavior: "smooth"})}>FAQ</button>
+                    <button onClick = {() => contactRef.current?.scrollIntoView({behavior: "smooth"})}>Contact</button>
                 </div>
 
                 <div className ="flex flex-row items-center gap-10">

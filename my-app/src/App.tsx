@@ -10,7 +10,7 @@ import FAQ from "./components/FAQ"
 import Footer from "./components/Footer"
 import Contact from "./components/Contact"
 import Juno from './components/Juno'
-
+import JunoHello from './assets/JunoHello.png';
 
 export default function App() {
 
@@ -26,21 +26,20 @@ export default function App() {
       </div>
       <div className=" relative flex gap-24 items-center justify-center flex-col min-h-screen">
         <Hero buildRef={buildRef} aboutRef={aboutRef}/>
-        
-        <div ref ={buildRef}>
+        <div className= "scroll-mt-[28vh]" ref ={buildRef}>
           <Build />
         </div>
-        <div ref ={aboutRef}>
+        <div  ref ={aboutRef}>
           <About />
         </div>
           <Testimonials />
-        <div ref ={faqRef}>
+        <div className= "scroll-mt-[10vh]" ref ={faqRef}>
           <FAQ />
         </div>
-        <div ref ={contactRef}>
+        <div className= "scroll-mt-[10vh]" ref ={contactRef}>
           <Contact />
         </div>
-          <Footer />
+          <Footer buildRef = {buildRef} aboutRef = {aboutRef} faqRef = {faqRef} contactRef = {contactRef} />
         </div>
     </div>
   );
