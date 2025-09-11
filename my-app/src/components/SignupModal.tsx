@@ -1,8 +1,14 @@
 import Input from "./Input"
 import Button from "./MotionButton"
 import SignupModalBackground1 from "../assets/SingupModalBackground1.png"
+import Tulips from "../assets/tulips.png"
+import Sun from "../assets/sun.jpg"
+import Waves from "../assets/waves.jpg"
+import Sky from "../assets/sky.jpg"
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
+import { FaArrowRightLong } from "react-icons/fa6";
+
 
 
 type SignupModalProps = {
@@ -12,24 +18,32 @@ type SignupModalProps = {
 export default function SignupModal({ onClose }: SignupModalProps){
     return(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur"> {/* For backdrop */}
-      <div className="flex flex-row bg-gray-900 text-white w-full max-w-5xl  h-[70vh] border-white/10 border-2 rounded-2xl p-6 "> {/* For Actual modal size */}
+      <div className="flex flex-row gap-6 bg-gray-900 text-white w-full max-w-5xl  h-[70vh] border-white/10 border-2 rounded-2xl px-6 py-6 "> {/* For Actual modal size */}
 
         {/*Image */}
         <div className="flex relative h-full w-1/2">
             <img 
-                src={SignupModalBackground1} 
-                className="border-2 rounded-2xl object-cover"
+                src={Sun} 
+                className="border-2 border-gray-900 rounded-2xl object-cover w-full"
                 />
-            <div className="absolute inset-0 flex flex-col justify-end items-center text-black">
+            <div className="absolute inset-0 flex flex-col justify-start items-center text-black">
+                <div className="flex flex-row justify-between w-full items-center py-4 px-4">
+                    <p className = "text-4xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">Juno</p>
+                    <Button variant="secondary" text="Back" Icon={FaArrowRightLong} />
+                </div>
+            </div> 
+            <div className="absolute inset-0 flex flex-col justify-end items-center text-white py-4 ">
                 <div className="flex flex-col gap-8 py-2 justify-center items-center">
-                    <h2 className="text-2xl font-bold">Capturing Moments</h2>
-                    <div className="flex flex-row w-full gap-4">
-                        <div className="w-1/3 border-4 rounded-4xl text-black"></div>
-                        <div className="w-1/3 border-4 rounded-4xl text-black"></div>
-                        <div className="w-1/3 border-4 rounded-4xl text-black"></div>
+                    <div className= "gap-0 text-center font-bold">
+                        <h2 className="text-2xl ">Helping Developers</h2>
+                        <h2 className="text-2xl ">Find Dream Jobs</h2>
+                    </div>
+                    <div className="flex flex-row w-full justify-center gap-4">
+                        <div className="w-1/4 border-2 rounded-4xl"></div>
+                        <div className="w-1/4 border-2 rounded-4xl"></div>
+                        <div className="w-1/4 border-2 rounded-4xl"></div>
                     </div>
                 </div>
-                
             </div> 
         </div>
             {/*Right side info */}
