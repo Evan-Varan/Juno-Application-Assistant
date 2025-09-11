@@ -2,6 +2,7 @@ import LoadingSpinner from './LoadingSpinner';
 import OutputCard from './OutputCard'
 import SectionHeading from './SectionHeading'
 import OtherQuestions from './OtherQuestion';
+import Loading from './Loading';
 
 type buildOutputProps = {
     showOutput: boolean
@@ -26,10 +27,7 @@ export default function BuildSectionOuput({showOutput, outputDescription,loading
         }
         {loading && showOutput == false 
         ?
-            <div className ="flex flex-col items-center justify-center gap-4">
-                <h1 className="text-4xl flex font-bold text-left text-white">Juno is building your request...</h1>
-                <LoadingSpinner/>
-            </div>
+            <Loading/>
         : null
         }
            
