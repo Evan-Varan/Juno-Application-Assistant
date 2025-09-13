@@ -1,5 +1,5 @@
 import {ArrowDownTrayIcon} from '@heroicons/react/24/solid'
-import Button from './Button'
+import Button from './Buttons/Button'
 import pdfblue from '../assets/pdfblue.png'
 import pdfgrey from '../assets/pdfgrey.png'
 

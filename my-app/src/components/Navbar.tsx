@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "./Buttons/Button";
 import Juno2 from "../assets/Juno2.png"
 import { FaGithub   } from "react-icons/fa";
 import { useState } from "react";
@@ -23,7 +23,7 @@ export default function Navbar({buildRef,aboutRef,faqRef,contactRef, setLogin, s
     }
     
     return(
-        <div className="flex flex-row items-center justify-between w-300 h-15 py-12">
+        <div className="flex flex-row items-center justify-between w-[70vw] h-15 py-12">
             <div className = "items-center gap-4 flex ">
                 <img 
                 src={Juno2} 
@@ -33,7 +33,7 @@ export default function Navbar({buildRef,aboutRef,faqRef,contactRef, setLogin, s
                     className = "text-4xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">Juno
                 </p>
             </div>
-            <div className= "flex text-white font-bold gap-10">
+            <div className= "flex text-white font-bold text-lg gap-10">
                 <button>Home</button>
                 <button onClick = {() => buildRef.current?.scrollIntoView({behavior: "smooth"})}>Builder</button>
                 <button onClick = {() => aboutRef.current?.scrollIntoView({behavior: "smooth"})}>About</button>
@@ -43,8 +43,8 @@ export default function Navbar({buildRef,aboutRef,faqRef,contactRef, setLogin, s
                     <FaGithub className="w-10 h-10 text-white hover:text-gray-400" />
                 </a>
                 <div className= "gap-4 flex">
-                    <Button text ="Login" onClick={enableLogin}/>
-                    <Button text = "Signup" variant="secondary" onClick={enableSingup}/>
+                    <Button text ="Login" variant="secondary" onClick={enableLogin}/>
+                    <Button text = "Signup"  onClick={enableSingup}/>
                 </div>
             </div>
         </div>

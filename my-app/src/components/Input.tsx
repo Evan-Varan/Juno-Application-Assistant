@@ -10,7 +10,13 @@ export default function Input({value, placeholder, onChange} : inputProps) {
             <input type = "text" 
             value = {value}
             onChange = {(e) => onChange?.(e.target.value)}
-            className="w-full h-full px-2 py-2 border border-solid rounded-xl border-gray-500 bg-gray-700 text-white"
+            className="
+    w-full px-3 py-2 rounded-xl
+    bg-gray-800 text-gray-100
+    border-2 border-gray-600
+    placeholder-gray-400
+    focus:outline-none focus:ring-2 focus:ring-indigo-400
+  "
             placeholder ={placeholder}>
             </input>
         </div>

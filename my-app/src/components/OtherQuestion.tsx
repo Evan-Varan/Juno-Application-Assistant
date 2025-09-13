@@ -1,5 +1,5 @@
 import Input from './Input';
-import Button from './Button';
+import Button from './Buttons/Button';
 import {SparklesIcon} from '@heroicons/react/24/solid'
 import { useState } from 'react';
 import Loading from './Loading';

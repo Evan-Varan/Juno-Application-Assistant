@@ -1,4 +1,4 @@
-import MotionButton from "./MotionButton"
+import Button from "./Buttons/Button"
 import Juno2 from "../assets/Juno2.png"
 import {motion} from "framer-motion"
 import {Section} from "./Section"
@@ -11,9 +11,10 @@ type heroProps = {
 
 export default function Hero({buildRef,aboutRef} : heroProps){
     return(
-        <Section className ="flex flex-row justify-between items-center h-screen">
-            <div className= "flex flex-col justify-between w-200 gap-4">
-                <motion.h1
+        <Section className ="flex flex-row justify-between w-full items-center h-screen">
+            <div className= "flex flex-col w-2/3 gap-8 ">
+                <div className = "flex flex-col gap-4">
+                    <motion.h1
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }} 
@@ -36,15 +37,17 @@ export default function Hero({buildRef,aboutRef} : heroProps){
                         transition={{ duration: 0.8 }}  
                         className="text-xl flex font-semibold text-gray-300 "> The first ever generative AI for software developer job applications.
                     </motion.p>
+                </div>
+
                 <div className= "gap-4 flex">
-                    <MotionButton text ="Try Now" onClick = {() => buildRef.current?.scrollIntoView({behavior: "smooth"})}/>
-                    <MotionButton variant="secondary" onClick = {() => aboutRef.current?.scrollIntoView({behavior: "smooth"})} text="Learn More"/>
+                    <Button size= "lg" text ="Try Now" onClick = {() => buildRef.current?.scrollIntoView({behavior: "smooth"})}/>
+                    <Button size= "lg" variant="secondary" onClick = {() => aboutRef.current?.scrollIntoView({behavior: "smooth"})} text="Learn More"/>
                 </div>
             </div>
-            <div className= "flex flex-col justify-between w-75">
+            <div className= "flex flex-col w-1/3">
                 <img 
                 src={Juno2} 
-                className="w-75 h-75"
+                className="w-full h-full scale-75"
                 /> 
             </div>
         </Section>

@@ -30,7 +30,7 @@ export default function Build(){
     return(
         <Section className='relative flex flex-col min-h-[60vh]'>
             {renderJuno()}
-            <Section className = "bg-items-center z-1 text-center border-2 gap-8 border-white/10 rounded-3xl bg-black">
+            <Section noMinWidth className = "flex z-1 text-center border-2 gap-8 border-white/10 rounded-3xl bg-black">
                 <BuildSectionInput search = {search} setSearch={setSearch} setShowOutput ={setShowOutput} setOutputDescription = {setOutputDescription} setLoading ={setLoading} setError ={setError} loading = {loading}/>
                 <BuildSectionOutput showOutput = {showOutput} outputDescription= {outputDescription} loading = {loading}/>
             </Section>      

@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from './Buttons/Button'
 import Input from './Input'
 import {SparklesIcon} from '@heroicons/react/24/solid'
 import SectionHeading from './SectionHeading'

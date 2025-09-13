@@ -1,5 +1,5 @@
 import Input from "./Input"
-import Button from "./Button"
+import Button from "./Buttons/Button"
 import SectionHeading from "./SectionHeading";
 import { IoIosSend } from "react-icons/io";
 import { Section } from "./Section";

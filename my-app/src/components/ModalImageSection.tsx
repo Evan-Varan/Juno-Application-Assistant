@@ -1,9 +1,10 @@
 import Input from "./Input"
-import Button from "./MotionButton"
+import Button from "./Buttons/Button"
 import SignupModalBackground1 from "../assets/SingupModalBackground1.png"
 import Tulips from "../assets/tulips.png"
 import Sun from "../assets/sun.jpg"
 import Waves from "../assets/waves.jpg"
+import City from "../assets/city.jpg"
 import Sky from "../assets/sky.jpg"
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
@@ -46,7 +47,7 @@ export default function ModalImageSection({setSignup} : ModalImageProps){
                 <img src={Sky} alt="Slide 2" className="w-full h-full object-cover rounded-2xl" />
                 </SwiperSlide>
                 <SwiperSlide>
-                <img src={Waves} alt="Slide 3" className="w-full h-full object-cover rounded-2xl" />
+                <img src={City} alt="Slide 3" className="w-full h-full object-cover rounded-2xl" />
                 </SwiperSlide>
             </Swiper>
             <div className="absolute inset-0 flex flex-col justify-start items-center text-black z-20 pointer-events-none">

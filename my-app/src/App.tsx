@@ -10,6 +10,7 @@ import FAQ from "./components/FAQ"
 import Footer from "./components/Footer"
 import Contact from "./components/Contact"
 import SignupModal from './components/SignupModal'
+import LoginModal from './components/LoginModal'
 
 export default function App() {
 
@@ -44,6 +45,7 @@ export default function App() {
         </div>
         {/* Modals */}
       {signup && <SignupModal setSignup={setSignup} />}
+      {login && <LoginModal setLogin={setLogin} />}
       {/* {login && <LoginModal onClose={() => setLogin(false)} />} */}
     </div>
   );
