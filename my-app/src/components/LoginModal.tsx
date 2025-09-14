@@ -5,6 +5,7 @@ import Tulips from "../assets/tulips.png"
 import Sun from "../assets/sun.jpg"
 import Waves from "../assets/waves.jpg"
 import Sky from "../assets/sky.jpg"
+
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";

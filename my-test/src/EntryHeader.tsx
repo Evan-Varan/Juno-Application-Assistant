@@ -2,8 +2,8 @@ import Juno2 from "./assets/Juno2.png"
 export default function EntryHeader(){
     return(
         <div className="flex flex-col items-center gap-4">
-            <div className="flex justify-end">
-                 <img src= {Juno2} className="w-1/12 h-auto"></img>
+            <div className="flex justify-end border border-red-500">
+                 <img src= {Juno2} className="w-1/5 h-auto border border-red-500"></img>
             </div>
             <img src= {Juno2} className="w-1/4 h-auto"></img>
             <div className=" flex flex-col gap-2">

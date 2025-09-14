@@ -11,6 +11,7 @@ import { FaApple } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import Castle from "../assets/castle.jpg"
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
@@ -41,7 +42,7 @@ export default function ModalImageSection({setSignup} : ModalImageProps){
                 className="w-full h-full"
             >
                 <SwiperSlide>
-                <img src={Sun} alt="Slide 1" className="w-full h-full object-cover rounded-2xl" />
+                <img src={Castle} alt="Slide 1" className="w-full h-full object-cover rounded-2xl" />
                 </SwiperSlide>
                 <SwiperSlide>
                 <img src={Sky} alt="Slide 2" className="w-full h-full object-cover rounded-2xl" />

@@ -4,11 +4,11 @@ import EntryHeader from "./EntryHeader"
 import ChatInput from "./ChatInput"
 export default function JunoBuild(){
     return(
-        <div className = "flex flex-col border border-red-500 h-[95vh]">
+        <div className = "flex flex-col h-[95vh]">
             <ApplicationTabs />
-            <div className="flex flex-row gap-4 justify-center w-max-6xl my-auto mx-auto h-11/12 border border-amber-600 ">
+            <div className="flex flex-row gap-4 justify-center w-max-6xl my-auto mx-auto h-11/12   ">
                 <SideBar/>
-                <div className="flex flex-col gap-12 w-4/5 items-center justify-end py-12 border-indigo-500 border rounded-2xl">
+                <div className="flex flex-col gap-12 w-4/5 items-center justify-end border-gray-300 border rounded-2xl shadow-[0_0_6px_rgba(0,0,0,0.15),0_0_6px_rgba(255,255,255,0.7)]">
                     <EntryHeader />
                     <ChatInput/>
                 </div>

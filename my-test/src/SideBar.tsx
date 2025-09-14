@@ -8,34 +8,34 @@ import { IoDocumentOutline } from "react-icons/io5";
 
 export default function SideBar(){
     return(
-        <div className="flex flex-col px-4 py-4 gap-8 w-1/5 border rounded-2xl">
+        <div className="flex flex-col px-4 py-4 gap-8 w-1/5 border-gray-300 border  rounded-2xl shadow-[0_0_6px_rgba(0,0,0,0.15),0_0_6px_rgba(255,255,255,0.7)]">
             <div className="flex flex-row items-center justify-start gap-2"> {/* bar header */}
                 <img src = {Juno2} className="w-1/4 h-auto"></img>
-                <h1 className="text-xl font-bold">Juno</h1>
+                <h1 className="text-2xl font-bold">Juno</h1>
             </div>
-            <div className="flex flex-row items-center border gap-2 rounded-2xl px-2">
+            <div className="flex flex-row items-center border-gray-200 shadow-[0_0_6px_rgba(0,0,0,0.15),0_0_6px_rgba(255,255,255,0.7)] gap-2 rounded-2xl px-2">
                 <CiSearch className="shrink-0 text-gray-500" />
                 <input 
                     type="text" 
                     placeholder="Search" 
-                    className="py-2 outline-none" 
+                    className="py-2 outline-none " 
                 />
             </div>
             <div className="gap-4 flex flex-col">
-                <button  className = "border rounded-2xl flex items-center gap-2 text-left px-2">
+                <button  className = "flex text-sm items-center gap-2 text-left px-2">
                     <IoHomeOutline className="shrink-0 text-gray-500" /> Home
                 </button>
-                <button  className = "border rounded-2xl flex items-center gap-2 text-left px-2">
+                <button  className = "flex text-sm items-center gap-2 text-left px-2">
                     <CgProfile className="shrink-0 text-gray-500" /> Profile
                 </button>
-                <button  className = "border rounded-2xl flex items-center gap-2 text-left px-2">
+                <button  className = "flex  text-sm items-center gap-2 text-left px-2">
                     <IoDocumentOutline  className="shrink-0 text-gray-500" /> New Application
                 </button>
             </div>
 
             <div className="gap-4 flex flex-col">
                 <h1 className="text-xl text-left font-bold">History</h1>
-                <button  className = " flex items-center gap-2 text-left px-2">
+                <button  className = "flex items-center gap-2 text-left px-2">
                     Example Application
                 </button>
                 <button  className = "flex items-center gap-2 text-left px-2">

@@ -7,26 +7,26 @@ import { FaGithub } from "react-icons/fa";
 
 export default function ApplicationTabs(){
     return (
-        <div className="flex flex-row px-4 py-0 items-center w-full gap-4 h-1/12 border-red-500 border ">
-            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-full bg-white border-gray-200 border hover:scale-105 hover:outline-1 outline-red-400
+        <div className="flex flex-row items-center w-full gap-4 h-1/12  ">
+            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-2xl bg-white border-gray-200   border hover:scale-105 hover:outline-1 outline-red-400
     shadow-[2px_2px_4px_rgba(0,0,0,0.1),-2px_-2px_4px_rgba(255,255,255,0.7)]">
                 <FaAirbnb  className="shrink-0 text-red-400 rounded-full w-5 h-5" /> 
                 AirBnB | Software Engineer
                 <IoMdClose  className="shrink-0 text-gray-500" /> 
             </button>
-            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-full bg-white border-gray-200 border hover:scale-105 hover:outline-1 outline-red-400
+            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-2xl bg-white border-gray-200 border hover:scale-105 hover:outline-1 outline-red-400
     shadow-[2px_2px_4px_rgba(0,0,0,0.1),-2px_-2px_4px_rgba(255,255,255,0.7)]">
                 <FcGoogle  className="shrink-0 rounded-full w-5 h-5" /> 
                 Google | Software Developer
                 <IoMdClose  className="shrink-0 text-gray-500" /> 
             </button>
-            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-full bg-white border-gray-200 border hover:scale-105 hover:outline-1 outline-red-400
+            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-2xl bg-white border-gray-200 border hover:scale-105 hover:outline-1 outline-red-400
     shadow-[2px_2px_4px_rgba(0,0,0,0.1),-2px_-2px_4px_rgba(255,255,255,0.7)]">
                 <FaApple  className="shrink-0 rounded-full w-5 h-5" /> 
                 Apple | Front-end Developer
                 <IoMdClose  className="shrink-0 text-gray-500" /> 
             </button>
-            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-full bg-white border-gray-200 border hover:scale-105 hover:outline-1 outline-red-400
+            <button className="flex items-center text-sm gap-2 px-4 py-2 rounded-2xl bg-white border-gray-200 border hover:scale-105 hover:outline-1 outline-red-400
     shadow-[2px_2px_4px_rgba(0,0,0,0.1),-2px_-2px_4px_rgba(255,255,255,0.7)]">
                 <FaGithub  className="shrink-0 rounded-full w-5 h-5" /> 
                 Github | Software Engineer
