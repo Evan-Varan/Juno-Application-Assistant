@@ -12,7 +12,7 @@
             "issuedby" : "Meta",
             "tags": ["React"]
         },
-        {
+    {
             "name": "Version Control",
             "dateissued": "July 2025",
             "issuedby" : "Meta",
@@ -29,12 +29,6 @@
             "dateissued": "Jun 2025",
             "issuedby" : "Meta",
             "tags": ["JavaScript"]
-        },
-        {
-            "name": "Tailwind CSS",
-            "dateissued": "Feb 2025",
-            "issuedby" : "Meta",
-            "tags": ["Tailwind CSS"]
         }
     ]
 }

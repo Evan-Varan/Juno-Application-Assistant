@@ -6,3 +6,27 @@ body {
 h1{
   font-family: 'Playfair Display', serif; /* elegant, editorial headings */
 }
+/* Light theme (default) */
+@theme {
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-border: #e5e7eb;
+
+  /* keep your dark-mode accents; they work on light too */
+  --color-primary: #3b82f6; /* indigo-500 */
+  --color-accent:  #38bdf8; /* sky-400 */
+}
+
+/* Dark overrides */
+.dark {
+  --color-bg: #000000;
+  --color-surface: #111827;
+  --color-text: #f9fafb;
+  --color-text-muted: #9ca3af;
+  --color-border: #1f2937;
+
+  --color-primary: #3b82f6;
+  --color-accent:  #38bdf8;
+}

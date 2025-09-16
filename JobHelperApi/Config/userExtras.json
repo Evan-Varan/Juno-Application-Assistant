@@ -10,7 +10,8 @@
             "CSS",
             "Tailwind CSS",
             "Next.js",
-            "JEST"
+            "JEST",
+            "RTL"
         ]
     },
     {
@@ -24,8 +25,7 @@
             ".NET Core",
             "REST APIs",
             "ASP.NET",
-            "Node.js",
-            "JEST"
+            "Node.js"
         ]
     },
     {
@@ -45,7 +45,8 @@
             "Git",
             "GitHub",
             "Docker",
-            "AWS"
+            "AWS",
+            "Postman"
         ]
     }
   ]
