@@ -1,6 +1,6 @@
-type ButtonProps = {
+export type ButtonProps = {
     onClick?: () => void,
-    text: string,
+    text?: string,
     Icon?: React.ComponentType<{ className?: string }> | string,
     iconPosition?: "left" | "right",
     className?: string

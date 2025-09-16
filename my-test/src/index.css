@@ -25,12 +25,20 @@ h1, h2, h3 {
   --color-bg: #ffffff;
   --color-surface: #f9fafb;
   --color-text: #111827;
-  --color-text-muted: #4b5563;
+  --color-text-muted: #6b7280;
   --color-border: #e5e7eb;
 
   /* keep your dark-mode accents; they work on light too */
   --color-primary: #3b82f6; /* indigo-500 */
+  --color-primary-gradient: linear-gradient(to right, #818cf8, #38bdf8);
   --color-accent:  #38bdf8; /* sky-400 */
+}
+
+.text-primary-gradient {
+  background: var(--color-primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Dark overrides */
