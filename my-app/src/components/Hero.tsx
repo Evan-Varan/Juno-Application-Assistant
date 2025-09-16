@@ -18,7 +18,7 @@ export default function Hero({buildRef,aboutRef} : heroProps){
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }} 
-                    className = "text-7xl flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">JUNO AI
+                    className = "text-7xl px-2 py-4 flex font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">JUNO AI
                 </motion.h1>
                 <motion.div 
                     initial={{ opacity: 0, y: 40 }}

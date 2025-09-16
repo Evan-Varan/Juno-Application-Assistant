@@ -1,11 +1,25 @@
+/* Import Google Fonts */
+/* MUST IMPORT FONT BEFORE TAILWIND */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap');
+
+/* Tailwind */
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Define fonts in Tailwind v4 */
+@theme {
+  --font-work: "Work Sans", sans-serif;
+  --font-crimson: "Crimson Pro", serif;
+}
+
+/* Optional defaults */
 body {
-  font-family: 'Nunito Sans', sans-serif; /* round, friendly body */
+  font-family: var(--font-work);
 }
-h1{
-  font-family: 'Playfair Display', serif; /* elegant, editorial headings */
+
+h1, h2, h3 {
+  font-family: var(--font-crimson);
 }
+
 /* Light theme (default) */
 @theme {
   --color-bg: #ffffff;

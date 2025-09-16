@@ -5,6 +5,8 @@ import { CgProfile } from "react-icons/cg";
 import { IoDocumentOutline } from "react-icons/io5";
 import userImage from "./assets/userImage.jpg"
 import { IoSettingsOutline } from "react-icons/io5";
+import HistoryButton from "./Buttons/HistoryButton";
+import LinkButton from "./Buttons/LinkButton";
 
 
 export default function SideBar(){
@@ -23,39 +25,21 @@ export default function SideBar(){
                 />
             </div>
             <div className="gap-4 flex flex-col">
-                <button  className = "flex text-sm items-center gap-2 text-left px-2 text-gray-500">
-                    <IoHomeOutline className="shrink-0 text-gray-500" /> Home
-                </button>
-                <button  className = "flex text-sm items-center gap-2 text-left px-2 text-gray-500">
-                    <CgProfile className="shrink-0 text-gray-500" /> Profile
-                </button>
-                <button  className = "flex  text-sm items-center gap-2 text-left px-2 text-gray-500">
-                    <IoDocumentOutline  className="shrink-0 text-gray-500" /> New Application
-                </button>
+                <LinkButton text="Home" Icon={IoHomeOutline}/>
+                <LinkButton text="Profile" Icon={CgProfile}/>
+                <LinkButton text="New Application" Icon={IoDocumentOutline}/>
             </div>
 
             <div className="gap-4 flex flex-col">
                 <h1 className="text-xl text-left font-bold text-gray-600">History</h1>
                 <h1 className=" text-left font-bold text-gray-500">Yesterday</h1>
-                <button  className = "flex items-center text-sm gap-2 text-left px-2 text-gray-500 [mask-image:linear-gradient(to_right,black,black,transparent)]  [mask-repeat:no-repeat] [mask-size:100%_100%]">
-                    Example Application fading
-                </button>
-                <button  className = "flex items-center text-sm gap-2 text-left px-2 text-gray-500">
-                    Example Application 2
-                </button>
-                <button  className = "flex items-center text-sm gap-2 text-left px-2 text-gray-500">
-                    Example Application 3
-                </button>
+                <HistoryButton text= "Example Fading Text"/>
+                <HistoryButton text= "Example Fading Text"/>
+                <HistoryButton text= "Example Fading Text"/>
                 <h1 className="text-left font-bold text-gray-500">Last Week</h1>
-                <button  className = "flex items-center text-sm gap-2 text-left px-2 text-gray-500">
-                    Example Application
-                </button>
-                <button  className = "flex items-center text-sm gap-2 text-left px-2 text-gray-500">
-                    Example Application 2
-                </button>
-                <button  className = "flex items-center text-sm gap-2 text-left px-2 text-gray-500">
-                    Example Application 3
-                </button>
+                <HistoryButton text= "Example Fading Text"/>
+                <HistoryButton text= "Example Fading Text"/>
+                <HistoryButton text= "Example Fading Text"/>
             </div>
             <div className="flex justify-endflex-row py-2 px-2 gap-2 border-gray-200 shadow-[0_0_6px_rgba(0,0,0,0.15),0_0_6px_rgba(255,255,255,0.7)] rounded-2xl items-center">
                 <img src= {userImage} className="justify-start border rounded-full w-10 h-auto"></img>

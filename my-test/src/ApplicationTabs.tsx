@@ -4,7 +4,7 @@ import { FaAirbnb } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import ApplicationTab from "./ApplicationTab";
+import ApplicationTab from "./Buttons/ApplicationTab";
 
 export default function ApplicationTabButton(){
     return (
