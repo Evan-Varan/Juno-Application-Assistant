@@ -10,7 +10,7 @@ import UserBar from "./UserBar";
 
 export default function SideBar(){
     return(
-        <div className="flex flex-col px-4 py-4 gap-8 w-1/5 border-gray-300 border rounded-2xl shadow-[0_0_6px_rgba(0,0,0,0.15),0_0_6px_rgba(255,255,255,0.7)]">
+        <div className="flex flex-col px-4 py-4 gap-8 justify-between border-gray-300 border rounded-2xl shadow-[0_0_6px_rgba(0,0,0,0.15),0_0_6px_rgba(255,255,255,0.7)]">
             <div className="flex flex-row items-center justify-start gap-2"> {/* bar header */}
                 <img src = {Juno2} className="w-1/4 h-auto"></img>
                 <h1 className="text-2xl font-bold">Juno</h1>

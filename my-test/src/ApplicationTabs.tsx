@@ -4,15 +4,15 @@ import { FaAirbnb } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import ApplicationTab from "./Buttons/ApplicationTabButton";
+import ApplicationTabButton from "./Buttons/ApplicationTabButton";
 
-export default function ApplicationTabButton(){
+export default function ApplicationTabs(){
     return (
-        <div className="flex flex-row items-center w-full gap-4 h-1/12  ">
-            <ApplicationTab  companyName="AirBnb" companyIcon={FaAirbnb} roleName = "Software Engineer"/>
-            <ApplicationTab  companyName="Google" companyIcon={FcGoogle} roleName = "Software Engineer"/>
-            <ApplicationTab  companyName="Apple" companyIcon={FaApple} roleName = "Software Engineer"/>
-            <ApplicationTab  companyName="Github" companyIcon={FaGithub} roleName = "Software Engineer"/>
+        <div className="flex flex-row h-full w-full gap-4 ">
+            <ApplicationTabButton  companyName="AirBnb" companyIcon={FaAirbnb} roleName = "Software Engineer"/>
+            <ApplicationTabButton  companyName="Google" companyIcon={FcGoogle} roleName = "Software Engineer"/>
+            <ApplicationTabButton  companyName="Apple" companyIcon={FaApple} roleName = "Software Engineer"/>
+            <ApplicationTabButton  companyName="Github" companyIcon={FaGithub} roleName = "Software Engineer"/>
             <button className = "items-center border rounded-xl px-2 py-1">+</button>
         </div>
     )

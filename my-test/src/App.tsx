@@ -9,8 +9,10 @@ function App() {
 
   return (
     <>
-      <JunoBuild/>
+    <JunoBuild />
     </>
+
+
   )
 }
 
