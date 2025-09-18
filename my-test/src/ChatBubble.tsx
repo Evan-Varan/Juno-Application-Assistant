@@ -2,6 +2,7 @@ import Juno from "./assets/Juno2.png"
 import User from "./assets/userImage.jpg"
 
 type ChatBubbleProps = {
+    key: string,
     text: string,
     sender: "Juno" | "User";
 }
