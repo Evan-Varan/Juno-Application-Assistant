@@ -10,6 +10,7 @@
             "CSS",
             "Tailwind CSS",
             "Next.js",
+            "Vite",
             "JEST",
             "RTL"
         ]
@@ -46,7 +47,8 @@
             "GitHub",
             "Docker",
             "AWS",
-            "Postman"
+            "Postman",
+            "Figma"
         ]
     }
   ]

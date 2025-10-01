@@ -11,6 +11,7 @@
         { "id": "css", "name": "CSS" },
         { "id": "tailwind", "name": "Tailwind CSS" },
         { "id": "nextjs", "name": "Next.js" },
+        { "id": "vite", "name": "Vite" },
         { "id": "jest", "name": "JEST" },
         { "id": "rtl", "name": "RTL" }
       ]
