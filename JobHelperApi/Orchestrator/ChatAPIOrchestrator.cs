@@ -3,13 +3,13 @@ using JobHelperApi.Services;
 
 namespace JobHelperApi.Orchestror;
 
-public class JobApplicationOrchestrator
+public class ChatAPIOrchestrator
 {
     private readonly JobParserService jobParserService;
     private readonly ResumeService resumeService;
     private readonly CoverLetterService CoverLetterService;
 
-    public JobApplicationOrchestrator(JobParserService jps, ResumeService rs, CoverLetterService cls)
+    public ChatAPIOrchestrator(JobParserService jps, ResumeService rs, CoverLetterService cls)
     {
         jobParserService = jps;
         resumeService = rs;

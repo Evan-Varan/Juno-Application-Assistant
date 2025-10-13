@@ -1,6 +1,6 @@
 namespace JobHelperApi.Resources
 {
-    public static class Prompts
+    public static class ChatAPiPrompts
     {
         public static string coverLetterSystemPrompt = @"
         You are helping an early-career software developer write professional, authentic cover letters.
