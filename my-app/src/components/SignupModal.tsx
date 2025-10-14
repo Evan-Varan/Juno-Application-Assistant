@@ -8,6 +8,7 @@ import Sky from "../assets/sky.jpg"
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub   } from "react-icons/fa";
 import ModalImageSection from "./ModalImageSection"
+import { useRef, useState } from 'react' 
 
 
 
@@ -16,12 +17,56 @@ type SignupModalProps = {
   setLogin: (value: boolean) => void;
 };
 
+type testSignupDataType = {
+    FirstName : string,
+    LastName: string,
+    Email: string,
+    Password: string,
+}
+
 export default function SignupModal({ setSignup, setLogin }: SignupModalProps){
+
+    const [firstName, setFirstName] = useState<string>("");
+    const [lastName, setLastName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
 
     function handleLogin(){
         setSignup(false)
         setLogin(true)
     }
+
+    let testSignupData = {
+        FirstName: firstName,
+        LastName: lastName,
+        Email: email,
+        Password: password
+    };
+
+    let abortController = useRef<(AbortController | null)>(null) //Global reference to abortcontroller
+    
+    async function handleSignup() {
+        abortController.current = new AbortController();
+        console.log("calling /api/signup with", testSignupData);
+
+        try {
+            await fetch("http://localhost:5005/api/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(testSignupData),
+                signal: abortController.current.signal
+            });
+        } catch (e: any) {
+            if (e.name === "AbortError") {
+            console.log("user canceled request");
+            } else {
+            console.error("request failed", e);
+            }
+        }
+    }
+
+
+
 
     return(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur"> {/* For backdrop */}
@@ -43,20 +88,20 @@ export default function SignupModal({ setSignup, setLogin }: SignupModalProps){
                 <div className="gap-4 flex flex-col w-full ">
                     <div className="flex flex-row gap-4">
                         <div className="w-1/2">
-                            <Input placeholder="First Name" />
+                            <Input value = {firstName} onChange={(val) => setFirstName(val)} placeholder="First Name" />
                         </div>
                         <div className="w-1/2">
-                            <Input placeholder="Last Name" />
+                            <Input placeholder="Last Name" onChange={(val) => setLastName(val)}/>
                         </div>
                     </div>
-                    <Input placeholder = "Email"/>
-                    <Input placeholder = "Enter your password"/>
+                    <Input placeholder = "Email" onChange={(val) => setEmail(val)}/>
+                    <Input placeholder = "Enter your password" onChange={(val) => setPassword(val)}/>
                     {/* terms and conditions checkbox and p text*/}     
                 </div>
 
                 {/*Creat account and register with */}
                 <div className="flex flex-col gap-8 text-center w-full">
-                        <Button text = "Create Account"/>
+                        <Button text = "Create Account" onClick={handleSignup}/>
 
                         <div className = "flex flex-row gap-4 items-center justify-center w-full">
                             <div className="flex-1 border-1 bg-gray-300"></div> {/* flex-1 says take all avaliable space while sharing all avaliable space wioth siblings */}

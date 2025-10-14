@@ -19,10 +19,10 @@ public class CoverLetterService
     }
     public async Task<CoverLetterResult> CoverLetterTextAsync(JobParseResult jobParseResult, string resumeText)
     {
-        var system = Prompts.coverLetterSystemPrompt;
+        var system = ChatAPiPrompts.coverLetterSystemPrompt;
 
         var user =
-        $"{Prompts.coverLetterUserPrompt}\n" +
+        $"{ChatAPiPrompts.coverLetterUserPrompt}\n" +
         $"Job Title: {jobParseResult.Title}\n" +
         $"Company: {jobParseResult.Company}\n" +
         $"Description:\n{jobParseResult.Description}\n" +

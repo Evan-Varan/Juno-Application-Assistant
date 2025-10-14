@@ -20,6 +20,7 @@ type LoginModalProps = {
   setSignup: (value: boolean) => void;
 };
 
+
 export default function LoginModal({ setLogin, setSignup }: LoginModalProps){
 
     function handleForgotPassword(){
@@ -30,6 +31,11 @@ export default function LoginModal({ setLogin, setSignup }: LoginModalProps){
         setLogin(false)
         setSignup(true)
     }
+
+    function handleLogin() : void{
+        window.open("http://localhost:5005/api/login", "_blank");
+    }
+    
 
     return(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur"> {/* For backdrop */}
@@ -58,7 +64,7 @@ export default function LoginModal({ setLogin, setSignup }: LoginModalProps){
 
                 {/*Creat account and register with */}
                 <div className="flex flex-col gap-8 text-center w-full">
-                        <Button text = "Sign in"/>
+                        <Button text = "Sign in" onClick={handleLogin}/>
                     <div className = "flex flex-col gap-4">
                         <div className = "flex flex-row gap-4 items-center justify-center w-full">
                             <div className="flex-1 border-1 bg-gray-300"></div>

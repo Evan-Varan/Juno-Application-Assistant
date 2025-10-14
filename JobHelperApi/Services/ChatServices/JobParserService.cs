@@ -18,9 +18,9 @@ namespace JobHelperApi.Services
         }
         public async Task<JobParseResult> ParseJobAsync(JobTextInput jobText)
         {
-            var system = Prompts.parseSystemPrompt;
+            var system = ChatAPiPrompts.parseSystemPrompt;
 
-            var user = Prompts.parseUserPrompt + jobText.JobText;
+            var user = ChatAPiPrompts.parseUserPrompt + jobText.JobText;
 
             //ChatGPT Request
             var parseChatRequest = new ChatRequest(

@@ -5,6 +5,12 @@ using System.Text.Json;
 using System.Net.Http.Json;
 using JobHelperApi.Services;
 using JobHelperApi.Orchestror;
+using JobHelperApi.Data;
+using JobHelperApi.Models.AuthModels;
+
+// using JobHelperApi.Services.AuthServices;
+using Microsoft.EntityFrameworkCore;
+
 
 
 
@@ -34,15 +40,19 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<JobParserService>();
 builder.Services.AddScoped<ResumeService>();
 builder.Services.AddScoped<CoverLetterService>();
-builder.Services.AddScoped<JobApplicationOrchestrator>();
+builder.Services.AddScoped<ChatAPIOrchestrator>();
 builder.Services.AddScoped<AnswerQuestions>();
+
+builder.Services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 app.UseCors();
+Console.WriteLine("Connection: " + builder.Configuration.GetConnectionString("DefaultConnection"));
 
 
 //JOB PARSER ENDPOINT. Client will call this endpoint with the raw text input.
-app.MapPost("/api/jobparser", async (JobApplicationOrchestrator orchestrator, JobTextInput input) =>
+app.MapPost("/api/jobparser", async (ChatAPIOrchestrator orchestrator, JobTextInput input) =>
 {
     var package = await orchestrator.BuildApplicationAsync(input);
     JobApplicationStore.LastPackage = package;
@@ -82,5 +92,31 @@ app.MapPost("/api/otherquestions", async (AnswerQuestions asked, UserQuestionInp
     var result = await asked.Ask(lastPackage, userQuestion);
     return Results.Ok(result);
 });
-app.Run();
 
+
+//Auth Enpoints
+app.MapPost("/api/signup", async(AuthDbContext context, Signup signup) =>
+{
+    Console.WriteLine(signup.FirstName);
+    Console.WriteLine(signup.LastName);
+    Console.WriteLine(signup.Email);
+    Console.WriteLine(signup.Password);
+    var user = new User
+    {
+        first_name = signup.FirstName,
+        last_name = signup.LastName,
+        email = signup.Email,
+        password = signup.Password,
+        created_at = DateTime.Now
+    };
+    context.Users.Add(user);
+    await context.SaveChangesAsync();
+
+    return Results.Ok("User registered successfully");
+});
+
+app.MapGet("/api/login", async(AuthDbContext context) =>
+{
+    Console.WriteLine("Login");
+});
+app.Run();
