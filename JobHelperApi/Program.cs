@@ -10,6 +10,7 @@ using JobHelperApi.Models.AuthModels;
 
 // using JobHelperApi.Services.AuthServices;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 
 
@@ -115,8 +116,30 @@ app.MapPost("/api/signup", async(AuthDbContext context, Signup signup) =>
     return Results.Ok("User registered successfully");
 });
 
-app.MapGet("/api/login", async(AuthDbContext context) =>
+app.MapPost("/api/login", async(AuthDbContext context, Login login) =>
 {
-    Console.WriteLine("Login");
+    Console.WriteLine(login.Email);
+    Console.WriteLine(login.Password);
+    
+    //Convert users table to list
+    var currentUsers = await context.Users.ToListAsync();
+
+    //sql query to filter rows to only be the one where email and password match
+    var userTryLoginQuery =
+        from u in context.Users
+        where u.email == login.Email && u.password == login.Password
+        select u;
+
+    var userFound = await userTryLoginQuery.FirstOrDefaultAsync();
+
+    if (userFound != null)
+    {
+        Console.WriteLine("User Found");
+    }
+    else
+    {
+        Console.WriteLine("User Not Found");
+    }
+
 });
 app.Run();

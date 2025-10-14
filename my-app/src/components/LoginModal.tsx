@@ -12,7 +12,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { FaGithub   } from "react-icons/fa";
 import ModalImageSection from "./ModalImageSection"
 import Checkbox from "./Checkbox"
-
+import { useRef, useState } from "react"
 
 
 type LoginModalProps = {
@@ -22,6 +22,13 @@ type LoginModalProps = {
 
 
 export default function LoginModal({ setLogin, setSignup }: LoginModalProps){
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+
+    let loginViewModel = {
+        email : email,
+        password : password,
+    }
 
     function handleForgotPassword(){
         console.log("forgot password")
@@ -32,8 +39,26 @@ export default function LoginModal({ setLogin, setSignup }: LoginModalProps){
         setSignup(true)
     }
 
-    function handleLogin() : void{
-        window.open("http://localhost:5005/api/login", "_blank");
+    let abortController = useRef<(AbortController | null)>(null) //Global reference to abortcontroller
+
+    async function handleLogin() {
+        abortController.current = new AbortController();
+        console.log("calling /api/signup with", loginViewModel);
+
+        try {
+            await fetch("http://localhost:5005/api/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(loginViewModel),
+                signal: abortController.current.signal
+            });
+        } catch (e: any) {
+            if (e.name === "AbortError") {
+            console.log("user canceled request");
+            } else {
+            console.error("request failed", e);
+            }
+        }
     }
     
 
@@ -53,8 +78,8 @@ export default function LoginModal({ setLogin, setSignup }: LoginModalProps){
 
                 {/*Input fields and checkbox */}
                 <div className="gap-4 flex flex-col w-full ">
-                    <Input placeholder = "Email"/>
-                    <Input placeholder = "Enter your password"/>
+                    <Input placeholder = "Email" onChange={(val) => setEmail(val)}/>
+                    <Input placeholder = "Enter your password" onChange={(val) => setPassword(val)}/>
                     {/* terms and conditions checkbox and p text*/}
                     <div className= "flex flex-row justify-between w-full">
                         <Checkbox/>

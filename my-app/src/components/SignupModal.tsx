@@ -17,12 +17,6 @@ type SignupModalProps = {
   setLogin: (value: boolean) => void;
 };
 
-type testSignupDataType = {
-    FirstName : string,
-    LastName: string,
-    Email: string,
-    Password: string,
-}
 
 export default function SignupModal({ setSignup, setLogin }: SignupModalProps){
 
@@ -36,7 +30,7 @@ export default function SignupModal({ setSignup, setLogin }: SignupModalProps){
         setLogin(true)
     }
 
-    let testSignupData = {
+    let signupViewModel = {
         FirstName: firstName,
         LastName: lastName,
         Email: email,
@@ -47,13 +41,13 @@ export default function SignupModal({ setSignup, setLogin }: SignupModalProps){
     
     async function handleSignup() {
         abortController.current = new AbortController();
-        console.log("calling /api/signup with", testSignupData);
+        console.log("calling /api/signup with", signupViewModel);
 
         try {
             await fetch("http://localhost:5005/api/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(testSignupData),
+                body: JSON.stringify(signupViewModel),
                 signal: abortController.current.signal
             });
         } catch (e: any) {
