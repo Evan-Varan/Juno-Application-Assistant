@@ -59,6 +59,7 @@ var app = builder.Build();
 app.UseCors();
 Console.WriteLine("Connection: " + builder.Configuration.GetConnectionString("DefaultConnection"));
 
+app.MapGet("/", () => "Juno backend is running ✅");
 
 //JOB PARSER ENDPOINT. Client will call this endpoint with the raw text input.
 app.MapPost("/api/jobparser", async (ChatAPIOrchestrator orchestrator, JobTextInput input) =>
