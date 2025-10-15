@@ -101,13 +101,14 @@ app.MapPost("/api/signup", async(AuthDbContext context, Signup signup) =>
     Console.WriteLine(signup.FirstName);
     Console.WriteLine(signup.LastName);
     Console.WriteLine(signup.Email);
-    Console.WriteLine(signup.Password);
+
+    var hashedPassword = PasswordHelper.HashPassword(signup.Password);
     var user = new User
     {
         first_name = signup.FirstName,
         last_name = signup.LastName,
         email = signup.Email,
-        password = signup.Password,
+        password = hashedPassword,
         created_at = DateTime.Now
     };
     context.Users.Add(user);
@@ -119,27 +120,29 @@ app.MapPost("/api/signup", async(AuthDbContext context, Signup signup) =>
 app.MapPost("/api/login", async(AuthDbContext context, Login login) =>
 {
     Console.WriteLine(login.Email);
-    Console.WriteLine(login.Password);
     
     //Convert users table to list
     var currentUsers = await context.Users.ToListAsync();
 
-    //sql query to filter rows to only be the one where email and password match
+    //sql query to filter rows to only be the one where email matches
     var userTryLoginQuery =
         from u in context.Users
-        where u.email == login.Email && u.password == login.Password
+        where u.email == login.Email
         select u;
 
     var userFound = await userTryLoginQuery.FirstOrDefaultAsync();
 
-    if (userFound != null)
+    bool userLoginSuccess = PasswordHelper.VerifyPassword(userFound.password, login.Password);
+
+    if (userLoginSuccess)
     {
-        Console.WriteLine("User Found");
+        Console.WriteLine("User Login Success!");
     }
     else
     {
-        Console.WriteLine("User Not Found");
+        Console.WriteLine("User Login Fail.");
     }
+    Console.WriteLine(userFound.password);
 
 });
 app.Run();
