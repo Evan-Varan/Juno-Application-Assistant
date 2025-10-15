@@ -45,11 +45,15 @@ export default function BuildSectionInput({search, setSearch, setShowOutput, set
 
     async function handleJobDescriptionInput() {
         abortController.current = new AbortController(); //We have to create a new instance of abort controller each time we use it as it destroys itself when aborted
+
+        //Vite auto uses .env.local for localhost and .env.production for production
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
         console.log("calling /api/jobparser with", search);
         try {
             setLoading(true)
             const startTime : number = Date.now();
-            const res = await fetch("http://localhost:5005/api/jobparser", {
+            const res = await fetch(`${API_BASE_URL}/api/jobparser`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ jobText: search }),

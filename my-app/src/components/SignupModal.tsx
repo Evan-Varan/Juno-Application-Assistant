@@ -34,12 +34,15 @@ export default function SignupModal({ setSignup, setLogin }: SignupModalProps){
 
     let abortController = useRef<(AbortController | null)>(null) //Global reference to abortcontroller
     
+    //Vite auto uses .env.local for localhost and .env.production for production
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
     async function handleSignup() {
         abortController.current = new AbortController();
         console.log("calling /api/signup with", signupViewModel);
 
         try {
-            await fetch("http://localhost:5005/api/signup", {
+            await fetch(`${API_BASE_URL}/api/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(signupViewModel),

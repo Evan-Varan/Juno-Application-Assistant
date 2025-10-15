@@ -9,9 +9,12 @@ type cardProps = {
     downloadType: string
 }
 
+//Vite auto uses .env.local for localhost and .env.production for production
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export default function OutputCard({title, contentText, downloadType} : cardProps) {
     function handleDownload() : void{
-        window.open(`http://localhost:5005/api/download${downloadType}`, "_blank");
+        window.open(`${API_BASE_URL}/api/download${downloadType}`, "_blank");
     }
     return (
         <div className = "flex flex-row rounded-2xl border-solid border-white/10 border-2  bg-gray-900 w-80 h-40">
