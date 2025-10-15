@@ -1,8 +1,13 @@
 {
-  "include": ["src", "src/vite-env.d.ts", "src/types.d.ts"],
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "src/vite-env.d.ts", "src/types.d.ts"]
 }
