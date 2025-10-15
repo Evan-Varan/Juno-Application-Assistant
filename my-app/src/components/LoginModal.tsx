@@ -38,10 +38,10 @@ export default function LoginModal({ setLogin, setSignup }: LoginModalProps){
 
     async function handleLogin() {
         abortController.current = new AbortController();
-        console.log("calling /api/signup with", loginViewModel);
+        console.log("calling /api/login with", loginViewModel);
 
         try {
-            await fetch(`${API_BASE_URL}/api/signup`, {
+            await fetch(`${API_BASE_URL}/api/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(loginViewModel),
