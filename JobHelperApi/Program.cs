@@ -20,8 +20,10 @@ var builder = WebApplication.CreateBuilder(args);
 //listens to all ips instead of localhost
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(5005); 
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+    options.ListenAnyIP(int.Parse(port));
 });
+
 
 // Register OpenAI client
 var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
