@@ -30,11 +30,12 @@ jobs:
       - name: Publish project
         run: dotnet publish JobHelperApi/JobHelperApi.csproj --configuration Release --no-build --output ./publish
 
-      - name: Upload published app as artifact
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: dotnet-app
+          name: .net-app
           path: ./publish
+
 
   deploy:
     runs-on: windows-latest
@@ -58,8 +59,11 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_BECE76877471495C9EB72B779D6207DF }}
 
       - name: Deploy to Azure Web App
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'Juno-Backend'
           slot-name: 'Production'
           package: ./publish
+
+
