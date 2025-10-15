@@ -17,6 +17,12 @@ using System.Linq.Expressions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//listens to all ips instead of localhost
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5005); 
+});
+
 // Register OpenAI client
 var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
 

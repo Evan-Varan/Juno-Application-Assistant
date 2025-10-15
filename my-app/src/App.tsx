@@ -44,8 +44,8 @@ export default function App() {
           <Footer buildRef = {buildRef} aboutRef = {aboutRef} faqRef = {faqRef} contactRef = {contactRef} />
         </div>
         {/* Modals */}
-      {signup && <SignupModal setSignup={setSignup} />}
-      {login && <LoginModal setLogin={setLogin} />}
+      {signup && <SignupModal setSignup={setSignup} setLogin={setLogin}/>}
+      {login && <LoginModal setSignup={setSignup} setLogin={setLogin} />}
       {/* {login && <LoginModal onClose={() => setLogin(false)} />} */}
     </div>
   );

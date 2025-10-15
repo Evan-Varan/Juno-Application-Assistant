@@ -1,7 +1,6 @@
 import Button from "./Buttons/Button";
 import Juno2 from "../assets/Juno2.png"
 import { FaGithub   } from "react-icons/fa";
-import { useState } from "react";
 
 type navbarProps = {
     buildRef: React.RefObject<HTMLDivElement | null>,

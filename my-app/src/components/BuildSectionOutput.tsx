@@ -1,4 +1,3 @@
-import LoadingSpinner from './LoadingSpinner';
 import OutputCard from './OutputCard'
 import SectionHeading from './SectionHeading'
 import OtherQuestions from './OtherQuestion';

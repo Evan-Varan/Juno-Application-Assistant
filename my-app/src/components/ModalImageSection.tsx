@@ -1,16 +1,9 @@
-import Input from "./Input"
 import Button from "./Buttons/Button"
-import SignupModalBackground1 from "../assets/SingupModalBackground1.png"
-import Tulips from "../assets/tulips.png"
-import Sun from "../assets/sun.jpg"
-import Waves from "../assets/waves.jpg"
 import City from "../assets/city.jpg"
 import Sky from "../assets/sky.jpg"
-import { FaGoogle } from "react-icons/fa";
-import { FaApple } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay} from "swiper/modules";
 import Castle from "../assets/castle.jpg"
 import "swiper/css";
 import "swiper/css/pagination";

@@ -1,10 +1,5 @@
 import Input from "./Input"
 import Button from "./Buttons/Button"
-import SignupModalBackground1 from "../assets/SingupModalBackground1.png"
-import Tulips from "../assets/tulips.png"
-import Sun from "../assets/sun.jpg"
-import Waves from "../assets/waves.jpg"
-import Sky from "../assets/sky.jpg"
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub   } from "react-icons/fa";
 import ModalImageSection from "./ModalImageSection"
