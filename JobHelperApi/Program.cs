@@ -67,7 +67,10 @@ builder.Services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(bui
 
 
 var app = builder.Build();
+app.UseRouting();
 app.UseCors("AllowFrontend");
+
+app.UseHttpsRedirection();
 
 Console.WriteLine("Connection: " + builder.Configuration.GetConnectionString("DefaultConnection"));
 
