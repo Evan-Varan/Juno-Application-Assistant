@@ -41,9 +41,20 @@ else
 //Add OpenAI Client with API Key
 builder.Services.AddSingleton(_ => new OpenAIClient(apiKey));
 
-//Enable CORs
-builder.Services.AddCors(p =>
-    p.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+// Enable CORS for frontend (Vercel + local)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+            "http://localhost:5173", // local dev
+            "https://juno-application-assistant.vercel.app" // production frontend
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<JobParserService>();
@@ -56,7 +67,8 @@ builder.Services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(bui
 
 
 var app = builder.Build();
-app.UseCors();
+app.UseCors("AllowFrontend");
+
 Console.WriteLine("Connection: " + builder.Configuration.GetConnectionString("DefaultConnection"));
 
 app.MapGet("/", () => "Juno backend is running ✅");
