@@ -20,6 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
+builder.Logging.AddAzureWebAppDiagnostics(); // <— enables Azure log streaming capture
 
 
 builder.Configuration
