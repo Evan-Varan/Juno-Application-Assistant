@@ -63,7 +63,16 @@ builder.Services.AddScoped<CoverLetterService>();
 builder.Services.AddScoped<ChatAPIOrchestrator>();
 builder.Services.AddScoped<AnswerQuestions>();
 
-builder.Services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+if (!string.IsNullOrEmpty(connection))
+{
+    builder.Services.AddDbContext<AuthDbContext>(options => 
+        options.UseSqlServer(connection));
+}
+else
+{
+    Console.WriteLine("⚠️ No connection string found — skipping database registration.");
+}
 
 
 var app = builder.Build();
