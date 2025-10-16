@@ -17,6 +17,13 @@ using System.Linq.Expressions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+    .AddEnvironmentVariables();
+
+
 //listens to all ips instead of localhost
 builder.WebHost.ConfigureKestrel(options =>
 {
@@ -37,6 +44,10 @@ else
 {
     Console.WriteLine("✅ OPENAI_API_KEY loaded, length = " + apiKey.Length);
 }
+
+Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
+Console.WriteLine($"Connection: {builder.Configuration.GetConnectionString("DefaultConnection")}");
+
 
 //Add OpenAI Client with API Key
 builder.Services.AddSingleton(_ => new OpenAIClient(apiKey));
@@ -83,7 +94,7 @@ app.UseHttpsRedirection();
 
 Console.WriteLine("Connection: " + builder.Configuration.GetConnectionString("DefaultConnection"));
 
-app.MapGet("/", () => "Juno backend is running ✅");
+app.MapGet("/", () => $"Juno backend is running ✅Environment: {builder.Environment.EnvironmentName} Connection: {builder.Configuration.GetConnectionString("DefaultConnection")}");
 
 //JOB PARSER ENDPOINT. Client will call this endpoint with the raw text input.
 app.MapPost("/api/jobparser", async (ChatAPIOrchestrator orchestrator, JobTextInput input) =>
