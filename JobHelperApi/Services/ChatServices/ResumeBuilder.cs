@@ -39,12 +39,16 @@ public class ResumeBuilder
             var templateBlobPath = "resumetemplates/ResumeJobHelperTemplate.docx";
             var templateBlob = container.GetBlobClient(templateBlobPath);
 
-            templatePath = "/tmp/ResumeJobHelperTemplate.docx";
+            // Use Azure-safe temp path
+            var tempDir = Path.GetTempPath();
+            Directory.CreateDirectory(tempDir);
+
+            templatePath = Path.Combine(tempDir,"ResumeJobHelperTemplate.docx");
             await templateBlob.DownloadToAsync(templatePath);
 
-            Directory.CreateDirectory("temp");
-            ResumeDocxDirectory = $"/tmp/Resume-{companyName}.docx"; //Creates a temporary file on the Azure backend, it can hold small numbers of files
-            ResumePDFDirectory = $"/tmp/Resume-{companyName}.pdf"; //Creates a temporary file on the Azure backend, it can hold small numbers of files
+            
+            ResumeDocxDirectory = Path.Combine(tempDir,$"Resume-{companyName}.docx"); //Creates a temporary file on the Azure backend, it can hold small numbers of files
+            ResumePDFDirectory = Path.Combine(tempDir,$"Resume-{companyName}.pdf"); //Creates a temporary file on the Azure backend, it can hold small numbers of files
         }
         else
         {
