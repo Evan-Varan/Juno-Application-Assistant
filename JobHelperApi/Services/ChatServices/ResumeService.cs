@@ -5,16 +5,21 @@ namespace JobHelperApi.Services;
 
 public class ResumeService
 {
-    public string BuildResume(JobParseResult job)
+    private readonly ResumeBuilder _resumeBuilder;
+
+    public ResumeService(ResumeBuilder resumeBuilder)
+    {
+        _resumeBuilder = resumeBuilder;
+    }
+    public async Task<string> BuildResume(JobParseResult job)
     {
         var skills = new SkillChooser();
-        var ouputtedSkills = skills.ChooseSkills(job.TechStack);
+        var outputtedSkills = skills.ChooseSkills(job.TechStack);
 
         CertificationChooser cc = new CertificationChooser();
         var certifications = cc.ChooseCertifications(job.TechStack);
 
-        ResumeBuiler rb = new ResumeBuiler();
-        var resumeDocx = rb.WriteResume(ouputtedSkills, certifications, job.Company);
+        var resumeDocx = await _resumeBuilder.WriteResume(outputtedSkills, certifications, job.Company);
         return resumeDocx.Text;
     }
 }

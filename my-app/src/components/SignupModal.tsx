@@ -13,7 +13,7 @@ type SignupModalProps = {
 };
 
 
-export default function SignupModal({ setSignup, setLogin }: SignupModalProps){
+export default function SignupModal({ setSignup, setLogin }: SignupModalProps){  
 
     const [firstName, setFirstName] = useState<string>("");
     const [lastName, setLastName] = useState<string>("");

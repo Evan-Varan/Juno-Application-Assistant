@@ -13,7 +13,8 @@
         { "id": "nextjs", "name": "Next.js" },
         { "id": "vite", "name": "Vite" },
         { "id": "jest", "name": "JEST" },
-        { "id": "rtl", "name": "RTL" }
+        { "id": "rtl", "name": "RTL" },
+        { "id": "figma", "name": "Figma" }
       ]
     },
     {
@@ -56,8 +57,9 @@
         { "id": "lambda", "name": "AWS Lambda" },
         { "id": "iamroles", "name": "AWS IAM Roles" },
         { "id": "s3", "name": "AWS S3" },
-        { "id": "apprunner", "name": "AWS App Runner" }
-        
+        { "id": "apprunner", "name": "AWS App Runner" },
+        { "id": "azure", "name": "Azure" },
+        { "id": "vercel", "name": "Vercel" }
       ]
     }
   ]

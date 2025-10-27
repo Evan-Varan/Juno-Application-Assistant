@@ -176,5 +176,25 @@
   "app runner": "apprunner",
   "app-runner": "apprunner",
   "aws app runner": "apprunner",
-  "amazon app runner": "apprunner"
+  "amazon app runner": "apprunner",
+
+  "azure": "azure",
+  "microsoft azure": "azure",
+  "azure cloud": "azure",
+  "az": "azure",
+
+  "vercel": "vercel",
+  "vercel cloud": "vercel",
+  "vercel platform": "vercel",
+  "vercel hosting": "vercel",
+  "vercel deploy": "vercel",
+  "vercel deployment": "vercel",
+  "vercel app": "vercel",
+  "vercel serverless": "vercel",
+  "vercel edge": "vercel",
+  "vercel edge network": "vercel",
+  "vercel.com": "vercel",
+  "now.sh": "vercel",
+  "zeit": "vercel",
+  "zeit now": "vercel"
 }

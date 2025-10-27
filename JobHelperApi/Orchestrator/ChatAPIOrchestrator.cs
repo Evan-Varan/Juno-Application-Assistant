@@ -19,7 +19,7 @@ public class ChatAPIOrchestrator
     public async Task<JobApplicationPackage> BuildApplicationAsync(JobTextInput jobText)
     {
         var parsedResults = await jobParserService.ParseJobAsync(jobText);
-        var resumeResult = resumeService.BuildResume(parsedResults);
+        var resumeResult = await resumeService.BuildResume(parsedResults);
         
         var coverLetterResult = await CoverLetterService.CoverLetterTextAsync(parsedResults, resumeResult);
         var package = new JobApplicationPackage

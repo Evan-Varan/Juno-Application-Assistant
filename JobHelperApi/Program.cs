@@ -76,6 +76,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<JobParserService>();
 builder.Services.AddScoped<ResumeService>();
+builder.Services.AddScoped<ResumeBuilder>();
 builder.Services.AddScoped<CoverLetterService>();
 builder.Services.AddScoped<ChatAPIOrchestrator>();
 builder.Services.AddScoped<AnswerQuestions>();
@@ -83,8 +84,7 @@ builder.Services.AddScoped<AnswerQuestions>();
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 if (!string.IsNullOrEmpty(connection))
 {
-    builder.Services.AddDbContext<AuthDbContext>(options => 
-        options.UseSqlServer(connection));
+    builder.Services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(connection));
 }
 else
 {
@@ -174,11 +174,19 @@ app.MapPost("/api/login", async(AuthDbContext context, Login login) =>
     //Convert users table to list
     var currentUsers = await context.Users.ToListAsync();
 
-    //sql query to filter rows to only be the one where email matches
+    //LINQ Query Syntax
     var userTryLoginQuery =
         from u in context.Users
         where u.email == login.Email
         select u;
+
+    //LINQ Method Syntax -> should be used 99% of the time
+    // var userTryLoginMethod = context.Users
+    //                             .Where(u => u.email == login.Email)
+    //                             .Where(p => p.email.StartsWith("s"))
+    //                             .OrderBy(x => x.email)
+    //                             .Select(s => s.last_name);
+    
 
     var userFound = await userTryLoginQuery.FirstOrDefaultAsync();
 

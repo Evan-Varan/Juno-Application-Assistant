@@ -47,8 +47,10 @@
             "GitHub",
             "Docker",
             "AWS",
+            "Azure",
             "Postman",
-            "Figma"
+            "Figma",
+            "Vercel"
         ]
     }
   ]
