@@ -36,7 +36,7 @@ public class ResumeBuilder
             var serviceClient = new BlobServiceClient(connectionString);
             var container = serviceClient.GetBlobContainerClient("templates");
 
-            var templateBlobPath = "resumetemplates/ResumeJobHelperTemplate.docx";
+            var templateBlobPath = "ResumeJobHelperTemplate.docx";
             var templateBlob = container.GetBlobClient(templateBlobPath);
 
             // Use Azure-safe temp path
